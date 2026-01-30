@@ -2608,6 +2608,76 @@
     ]
   },
   {
+    "name": "Trading",
+    "subsectors": [
+      {
+        "name": "Trading",
+        "stocks": [
+          {
+            "symbol": "ADANIENT",
+            "name": "ADANI ENTERPRISES LTD.",
+            "mcap": 2608890000000,
+            "price": 2018.2
+          },
+          {
+            "symbol": "PREMIERENE",
+            "name": "PREMIER ENERGIES LIMITED",
+            "mcap": 323415000000,
+            "price": 713.9
+          },
+          {
+            "symbol": "AEGISLOG",
+            "name": "AEGIS LOGISTICS LIMITED",
+            "mcap": 244945000000,
+            "price": 697
+          },
+          {
+            "symbol": "REDINGTON",
+            "name": "REDINGTON LIMITED",
+            "mcap": 205450000000,
+            "price": 262.85
+          },
+          {
+            "symbol": "CPPLUS",
+            "name": "ADITYA INFOTECH LIMITED",
+            "mcap": 164686000000,
+            "price": 1402
+          },
+          {
+            "symbol": "CELLO",
+            "name": "CELLO WORLD LIMITED",
+            "mcap": 109548000000,
+            "price": 496.1
+          },
+          {
+            "symbol": "MMTC",
+            "name": "MMTC LTD.",
+            "mcap": 103500000000,
+            "price": 69
+          },
+          {
+            "symbol": "LLOYDSENT",
+            "name": "LLOYDS ENTERPRISES LIMITED",
+            "mcap": 88891100000,
+            "price": 58.25
+          },
+          {
+            "symbol": "HONASA",
+            "name": "HONASA CONSUMER LIMITED",
+            "mcap": 87313000000,
+            "price": 267.75
+          },
+          {
+            "symbol": "JSLL",
+            "name": "JEENA SIKHO LIFECARE LTD",
+            "mcap": 80571700000,
+            "price": 650.45
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "FMCG",
     "subsectors": [
       {
@@ -3058,76 +3128,6 @@
             "name": "VASA RETAIL & OVERSEA LTD",
             "mcap": 29962800,
             "price": 5
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Trading",
-    "subsectors": [
-      {
-        "name": "Trading",
-        "stocks": [
-          {
-            "symbol": "ADANIENT",
-            "name": "ADANI ENTERPRISES LTD.",
-            "mcap": 2608890000000,
-            "price": 2018.2
-          },
-          {
-            "symbol": "PREMIERENE",
-            "name": "PREMIER ENERGIES LIMITED",
-            "mcap": 323415000000,
-            "price": 713.9
-          },
-          {
-            "symbol": "AEGISLOG",
-            "name": "AEGIS LOGISTICS LIMITED",
-            "mcap": 244945000000,
-            "price": 697
-          },
-          {
-            "symbol": "REDINGTON",
-            "name": "REDINGTON LIMITED",
-            "mcap": 205450000000,
-            "price": 262.85
-          },
-          {
-            "symbol": "CPPLUS",
-            "name": "ADITYA INFOTECH LIMITED",
-            "mcap": 164686000000,
-            "price": 1402
-          },
-          {
-            "symbol": "CELLO",
-            "name": "CELLO WORLD LIMITED",
-            "mcap": 109548000000,
-            "price": 496.1
-          },
-          {
-            "symbol": "MMTC",
-            "name": "MMTC LTD.",
-            "mcap": 103500000000,
-            "price": 69
-          },
-          {
-            "symbol": "LLOYDSENT",
-            "name": "LLOYDS ENTERPRISES LIMITED",
-            "mcap": 88891100000,
-            "price": 58.25
-          },
-          {
-            "symbol": "HONASA",
-            "name": "HONASA CONSUMER LIMITED",
-            "mcap": 87313000000,
-            "price": 267.75
-          },
-          {
-            "symbol": "JSLL",
-            "name": "JEENA SIKHO LIFECARE LTD",
-            "mcap": 80571700000,
-            "price": 650.45
           }
         ]
       }
@@ -5690,146 +5690,6 @@
     ]
   },
   {
-    "name": "Education & Training",
-    "subsectors": [
-      {
-        "name": "Educational Institutions",
-        "stocks": [
-          {
-            "symbol": "PWL",
-            "name": "Physicswallah Limited",
-            "mcap": 348454000000,
-            "price": 121.85
-          },
-          {
-            "symbol": "CRIZAC",
-            "name": "CRIZAC LIMITED",
-            "mcap": 44104300000,
-            "price": 253
-          },
-          {
-            "symbol": "VERANDA",
-            "name": "VERANDA LEARNING SOL LTD",
-            "mcap": 18527100000,
-            "price": 192.36
-          },
-          {
-            "symbol": "JARO",
-            "name": "JARO INS OF TEC MG N RE L",
-            "mcap": 11017200000,
-            "price": 495.6
-          },
-          {
-            "symbol": "CLEDUCATE",
-            "name": "CL Educate Limited",
-            "mcap": 4081440000,
-            "price": 75.5
-          },
-          {
-            "symbol": "GLOBAL",
-            "name": "GLOBAL EDUCATION LIMITED",
-            "mcap": 3966750000,
-            "price": 77.93
-          },
-          {
-            "symbol": "CPEDU",
-            "name": "Career Point Edutech Limited",
-            "mcap": 3950600000,
-            "price": 217.5
-          },
-          {
-            "symbol": "ARIHANTACA",
-            "name": "ARIHANT ACADEMY LIMITED",
-            "mcap": 2634010000,
-            "price": 435
-          },
-          {
-            "symbol": "ZEELEARN",
-            "name": "ZEE LEARN LTD.",
-            "mcap": 2132440000,
-            "price": 6.5
-          },
-          {
-            "symbol": "FWSTC",
-            "name": "FLYWINGS SIMULAT T C LTD",
-            "mcap": 2035430000,
-            "price": 200
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Defence",
-    "subsectors": [
-      {
-        "name": "Defence",
-        "stocks": [
-          {
-            "symbol": "BEL",
-            "name": "BHARAT ELECTRONICS LTD",
-            "mcap": 3249200000000,
-            "price": 444.5
-          },
-          {
-            "symbol": "HAL",
-            "name": "HINDUSTAN AERONAUTICS LTD",
-            "mcap": 3077740000000,
-            "price": 4601
-          },
-          {
-            "symbol": "BDL",
-            "name": "Bharat Dynamics Limited",
-            "mcap": 561134000000,
-            "price": 1530.5
-          },
-          {
-            "symbol": "DATAPATTNS",
-            "name": "Data Patterns (India) Limited",
-            "mcap": 143420000000,
-            "price": 2561.8
-          },
-          {
-            "symbol": "ZENTEC",
-            "name": "ZEN TECHNOLOGIES LIMITED",
-            "mcap": 124939000000,
-            "price": 1384.1
-          },
-          {
-            "symbol": "ASTRAMICRO",
-            "name": "ASTRA MICROWAVE PRODUCTS LTD.",
-            "mcap": 91579200000,
-            "price": 964.55
-          },
-          {
-            "symbol": "PARAS",
-            "name": "PARAS DEF AND SPCE TECH L",
-            "mcap": 56391000000,
-            "price": 699.9
-          },
-          {
-            "symbol": "AXISCADES",
-            "name": "AXISCADES TECH LTD",
-            "mcap": 52253900000,
-            "price": 1228.4
-          },
-          {
-            "symbol": "UNIMECH",
-            "name": "UNIMECH AEROSPACE N MFG L",
-            "mcap": 43594500000,
-            "price": 858.15
-          },
-          {
-            "symbol": "AVANTEL",
-            "name": "AVANTEL LIMITED",
-            "mcap": 39490100000,
-            "price": 148.75
-          }
-        ]
-      }
-    ]
-  },
-  {
     "name": "Crude Oil",
     "subsectors": [
       {
@@ -5935,6 +5795,146 @@
             "name": "NEPTUNE PETROCHEMICALS L",
             "mcap": 5435710000,
             "price": 239.95
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Defence",
+    "subsectors": [
+      {
+        "name": "Defence",
+        "stocks": [
+          {
+            "symbol": "BEL",
+            "name": "BHARAT ELECTRONICS LTD",
+            "mcap": 3249200000000,
+            "price": 444.5
+          },
+          {
+            "symbol": "HAL",
+            "name": "HINDUSTAN AERONAUTICS LTD",
+            "mcap": 3077740000000,
+            "price": 4601
+          },
+          {
+            "symbol": "BDL",
+            "name": "Bharat Dynamics Limited",
+            "mcap": 561134000000,
+            "price": 1530.5
+          },
+          {
+            "symbol": "DATAPATTNS",
+            "name": "Data Patterns (India) Limited",
+            "mcap": 143420000000,
+            "price": 2561.8
+          },
+          {
+            "symbol": "ZENTEC",
+            "name": "ZEN TECHNOLOGIES LIMITED",
+            "mcap": 124939000000,
+            "price": 1384.1
+          },
+          {
+            "symbol": "ASTRAMICRO",
+            "name": "ASTRA MICROWAVE PRODUCTS LTD.",
+            "mcap": 91579200000,
+            "price": 964.55
+          },
+          {
+            "symbol": "PARAS",
+            "name": "PARAS DEF AND SPCE TECH L",
+            "mcap": 56391000000,
+            "price": 699.9
+          },
+          {
+            "symbol": "AXISCADES",
+            "name": "AXISCADES TECH LTD",
+            "mcap": 52253900000,
+            "price": 1228.4
+          },
+          {
+            "symbol": "UNIMECH",
+            "name": "UNIMECH AEROSPACE N MFG L",
+            "mcap": 43594500000,
+            "price": 858.15
+          },
+          {
+            "symbol": "AVANTEL",
+            "name": "AVANTEL LIMITED",
+            "mcap": 39490100000,
+            "price": 148.75
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Education & Training",
+    "subsectors": [
+      {
+        "name": "Educational Institutions",
+        "stocks": [
+          {
+            "symbol": "PWL",
+            "name": "Physicswallah Limited",
+            "mcap": 348454000000,
+            "price": 121.85
+          },
+          {
+            "symbol": "CRIZAC",
+            "name": "CRIZAC LIMITED",
+            "mcap": 44104300000,
+            "price": 253
+          },
+          {
+            "symbol": "VERANDA",
+            "name": "VERANDA LEARNING SOL LTD",
+            "mcap": 18527100000,
+            "price": 192.36
+          },
+          {
+            "symbol": "JARO",
+            "name": "JARO INS OF TEC MG N RE L",
+            "mcap": 11017200000,
+            "price": 495.6
+          },
+          {
+            "symbol": "CLEDUCATE",
+            "name": "CL Educate Limited",
+            "mcap": 4081440000,
+            "price": 75.5
+          },
+          {
+            "symbol": "GLOBAL",
+            "name": "GLOBAL EDUCATION LIMITED",
+            "mcap": 3966750000,
+            "price": 77.93
+          },
+          {
+            "symbol": "CPEDU",
+            "name": "Career Point Edutech Limited",
+            "mcap": 3950600000,
+            "price": 217.5
+          },
+          {
+            "symbol": "ARIHANTACA",
+            "name": "ARIHANT ACADEMY LIMITED",
+            "mcap": 2634010000,
+            "price": 435
+          },
+          {
+            "symbol": "ZEELEARN",
+            "name": "ZEE LEARN LTD.",
+            "mcap": 2132440000,
+            "price": 6.5
+          },
+          {
+            "symbol": "FWSTC",
+            "name": "FLYWINGS SIMULAT T C LTD",
+            "mcap": 2035430000,
+            "price": 200
           }
         ]
       }
@@ -6372,52 +6372,6 @@
     ]
   },
   {
-    "name": "Gas Transmission",
-    "subsectors": [
-      {
-        "name": "/Marketing",
-        "stocks": [
-          {
-            "symbol": "GAIL",
-            "name": "GAIL (INDIA) LTD.",
-            "mcap": 1100010000000,
-            "price": 167.3
-          },
-          {
-            "symbol": "ATGL",
-            "name": "ADANI TOTAL GAS LIMITED",
-            "mcap": 579710000000,
-            "price": 527.1
-          },
-          {
-            "symbol": "GUJGASLTD",
-            "name": "GUJARAT GAS LIMITED",
-            "mcap": 289571000000,
-            "price": 420.3
-          },
-          {
-            "symbol": "IGL",
-            "name": "INDRAPRASTHA GAS LTD.",
-            "mcap": 252630000000,
-            "price": 179.7
-          },
-          {
-            "symbol": "GSPL",
-            "name": "GUJARAT STATE PETRO LTD",
-            "mcap": 172056000000,
-            "price": 305.15
-          },
-          {
-            "symbol": "MGL",
-            "name": "MAHANAGAR GAS LTD.",
-            "mcap": 104596000000,
-            "price": 1058.6
-          }
-        ]
-      }
-    ]
-  },
-  {
     "name": "Oil and Gas",
     "subsectors": [
       {
@@ -6458,6 +6412,52 @@
             "name": "CHENNAI PETROLEUM CORP LT",
             "mcap": 130238000000,
             "price": 874.85
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Gas Transmission",
+    "subsectors": [
+      {
+        "name": "/Marketing",
+        "stocks": [
+          {
+            "symbol": "GAIL",
+            "name": "GAIL (INDIA) LTD.",
+            "mcap": 1100010000000,
+            "price": 167.3
+          },
+          {
+            "symbol": "ATGL",
+            "name": "ADANI TOTAL GAS LIMITED",
+            "mcap": 579710000000,
+            "price": 527.1
+          },
+          {
+            "symbol": "GUJGASLTD",
+            "name": "GUJARAT GAS LIMITED",
+            "mcap": 289571000000,
+            "price": 420.3
+          },
+          {
+            "symbol": "IGL",
+            "name": "INDRAPRASTHA GAS LTD.",
+            "mcap": 252630000000,
+            "price": 179.7
+          },
+          {
+            "symbol": "GSPL",
+            "name": "GUJARAT STATE PETRO LTD",
+            "mcap": 172056000000,
+            "price": 305.15
+          },
+          {
+            "symbol": "MGL",
+            "name": "MAHANAGAR GAS LTD.",
+            "mcap": 104596000000,
+            "price": 1058.6
           }
         ]
       }
@@ -6538,34 +6538,6 @@
     ]
   },
   {
-    "name": "Ratings",
-    "subsectors": [
-      {
-        "name": "Ratings",
-        "stocks": [
-          {
-            "symbol": "CRISIL",
-            "name": "CRISIL LTD.",
-            "mcap": 330292000000,
-            "price": 4514.8
-          },
-          {
-            "symbol": "ICRA",
-            "name": "ICRA LTD.",
-            "mcap": 59806300000,
-            "price": 6222
-          },
-          {
-            "symbol": "CARERATING",
-            "name": "CARE RATINGS LIMITED",
-            "mcap": 47219800000,
-            "price": 1570.6
-          }
-        ]
-      }
-    ]
-  },
-  {
     "name": "Abrasives",
     "subsectors": [
       {
@@ -6588,6 +6560,34 @@
             "name": "WENDT (INDIA) LIMITED",
             "mcap": 13636200000,
             "price": 6779
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ratings",
+    "subsectors": [
+      {
+        "name": "Ratings",
+        "stocks": [
+          {
+            "symbol": "CRISIL",
+            "name": "CRISIL LTD.",
+            "mcap": 330292000000,
+            "price": 4514.8
+          },
+          {
+            "symbol": "ICRA",
+            "name": "ICRA LTD.",
+            "mcap": 59806300000,
+            "price": 6222
+          },
+          {
+            "symbol": "CARERATING",
+            "name": "CARE RATINGS LIMITED",
+            "mcap": 47219800000,
+            "price": 1570.6
           }
         ]
       }
