@@ -5690,6 +5690,76 @@
     ]
   },
   {
+    "name": "Education & Training",
+    "subsectors": [
+      {
+        "name": "Educational Institutions",
+        "stocks": [
+          {
+            "symbol": "PWL",
+            "name": "Physicswallah Limited",
+            "mcap": 348454000000,
+            "price": 121.85
+          },
+          {
+            "symbol": "CRIZAC",
+            "name": "CRIZAC LIMITED",
+            "mcap": 44104300000,
+            "price": 253
+          },
+          {
+            "symbol": "VERANDA",
+            "name": "VERANDA LEARNING SOL LTD",
+            "mcap": 18527100000,
+            "price": 192.36
+          },
+          {
+            "symbol": "JARO",
+            "name": "JARO INS OF TEC MG N RE L",
+            "mcap": 11017200000,
+            "price": 495.6
+          },
+          {
+            "symbol": "CLEDUCATE",
+            "name": "CL Educate Limited",
+            "mcap": 4081440000,
+            "price": 75.5
+          },
+          {
+            "symbol": "GLOBAL",
+            "name": "GLOBAL EDUCATION LIMITED",
+            "mcap": 3966750000,
+            "price": 77.93
+          },
+          {
+            "symbol": "CPEDU",
+            "name": "Career Point Edutech Limited",
+            "mcap": 3950600000,
+            "price": 217.5
+          },
+          {
+            "symbol": "ARIHANTACA",
+            "name": "ARIHANT ACADEMY LIMITED",
+            "mcap": 2634010000,
+            "price": 435
+          },
+          {
+            "symbol": "ZEELEARN",
+            "name": "ZEE LEARN LTD.",
+            "mcap": 2132440000,
+            "price": 6.5
+          },
+          {
+            "symbol": "FWSTC",
+            "name": "FLYWINGS SIMULAT T C LTD",
+            "mcap": 2035430000,
+            "price": 200
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Crude Oil",
     "subsectors": [
       {
@@ -5865,76 +5935,6 @@
             "name": "AVANTEL LIMITED",
             "mcap": 39490100000,
             "price": 148.75
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Education & Training",
-    "subsectors": [
-      {
-        "name": "Educational Institutions",
-        "stocks": [
-          {
-            "symbol": "PWL",
-            "name": "Physicswallah Limited",
-            "mcap": 348454000000,
-            "price": 121.85
-          },
-          {
-            "symbol": "CRIZAC",
-            "name": "CRIZAC LIMITED",
-            "mcap": 44104300000,
-            "price": 253
-          },
-          {
-            "symbol": "VERANDA",
-            "name": "VERANDA LEARNING SOL LTD",
-            "mcap": 18527100000,
-            "price": 192.36
-          },
-          {
-            "symbol": "JARO",
-            "name": "JARO INS OF TEC MG N RE L",
-            "mcap": 11017200000,
-            "price": 495.6
-          },
-          {
-            "symbol": "CLEDUCATE",
-            "name": "CL Educate Limited",
-            "mcap": 4081440000,
-            "price": 75.5
-          },
-          {
-            "symbol": "GLOBAL",
-            "name": "GLOBAL EDUCATION LIMITED",
-            "mcap": 3966750000,
-            "price": 77.93
-          },
-          {
-            "symbol": "CPEDU",
-            "name": "Career Point Edutech Limited",
-            "mcap": 3950600000,
-            "price": 217.5
-          },
-          {
-            "symbol": "ARIHANTACA",
-            "name": "ARIHANT ACADEMY LIMITED",
-            "mcap": 2634010000,
-            "price": 435
-          },
-          {
-            "symbol": "ZEELEARN",
-            "name": "ZEE LEARN LTD.",
-            "mcap": 2132440000,
-            "price": 6.5
-          },
-          {
-            "symbol": "FWSTC",
-            "name": "FLYWINGS SIMULAT T C LTD",
-            "mcap": 2035430000,
-            "price": 200
           }
         ]
       }
@@ -6372,52 +6372,6 @@
     ]
   },
   {
-    "name": "Oil and Gas",
-    "subsectors": [
-      {
-        "name": "Refineries",
-        "stocks": [
-          {
-            "symbol": "RELIANCE",
-            "name": "RELIANCE INDUSTRIES LTD.",
-            "mcap": 18835800000000,
-            "price": 1391.9
-          },
-          {
-            "symbol": "IOC",
-            "name": "INDIAN OIL CORP LTD",
-            "mcap": 2303170000000,
-            "price": 163.09
-          },
-          {
-            "symbol": "BPCL",
-            "name": "BHARAT PETROLEUM CORPORATION L",
-            "mcap": 1591800000000,
-            "price": 366.9
-          },
-          {
-            "symbol": "HINDPETRO",
-            "name": "HINDUSTAN PETROLEUM CORPORATIO",
-            "mcap": 920070000000,
-            "price": 432.4
-          },
-          {
-            "symbol": "MRPL",
-            "name": "MANGALORE REFINERY & PETROCHEM",
-            "mcap": 309772000000,
-            "price": 176.75
-          },
-          {
-            "symbol": "CHENNPETRO",
-            "name": "CHENNAI PETROLEUM CORP LT",
-            "mcap": 130238000000,
-            "price": 874.85
-          }
-        ]
-      }
-    ]
-  },
-  {
     "name": "Gas Transmission",
     "subsectors": [
       {
@@ -6458,6 +6412,52 @@
             "name": "MAHANAGAR GAS LTD.",
             "mcap": 104596000000,
             "price": 1058.6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Oil and Gas",
+    "subsectors": [
+      {
+        "name": "Refineries",
+        "stocks": [
+          {
+            "symbol": "RELIANCE",
+            "name": "RELIANCE INDUSTRIES LTD.",
+            "mcap": 18835800000000,
+            "price": 1391.9
+          },
+          {
+            "symbol": "IOC",
+            "name": "INDIAN OIL CORP LTD",
+            "mcap": 2303170000000,
+            "price": 163.09
+          },
+          {
+            "symbol": "BPCL",
+            "name": "BHARAT PETROLEUM CORPORATION L",
+            "mcap": 1591800000000,
+            "price": 366.9
+          },
+          {
+            "symbol": "HINDPETRO",
+            "name": "HINDUSTAN PETROLEUM CORPORATIO",
+            "mcap": 920070000000,
+            "price": 432.4
+          },
+          {
+            "symbol": "MRPL",
+            "name": "MANGALORE REFINERY & PETROCHEM",
+            "mcap": 309772000000,
+            "price": 176.75
+          },
+          {
+            "symbol": "CHENNPETRO",
+            "name": "CHENNAI PETROLEUM CORP LT",
+            "mcap": 130238000000,
+            "price": 874.85
           }
         ]
       }
@@ -6538,34 +6538,6 @@
     ]
   },
   {
-    "name": "Abrasives",
-    "subsectors": [
-      {
-        "name": "Abrasives",
-        "stocks": [
-          {
-            "symbol": "GRINDWELL",
-            "name": "GRINDWELL NORTON LTD.",
-            "mcap": 167082000000,
-            "price": 1507.55
-          },
-          {
-            "symbol": "CARBORUNIV",
-            "name": "CARBORUNDUM UNIVERSAL LTD.",
-            "mcap": 153130000000,
-            "price": 805
-          },
-          {
-            "symbol": "WENDT",
-            "name": "WENDT (INDIA) LIMITED",
-            "mcap": 13636200000,
-            "price": 6779
-          }
-        ]
-      }
-    ]
-  },
-  {
     "name": "Ratings",
     "subsectors": [
       {
@@ -6588,6 +6560,34 @@
             "name": "CARE RATINGS LIMITED",
             "mcap": 47219800000,
             "price": 1570.6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Abrasives",
+    "subsectors": [
+      {
+        "name": "Abrasives",
+        "stocks": [
+          {
+            "symbol": "GRINDWELL",
+            "name": "GRINDWELL NORTON LTD.",
+            "mcap": 167082000000,
+            "price": 1507.55
+          },
+          {
+            "symbol": "CARBORUNIV",
+            "name": "CARBORUNDUM UNIVERSAL LTD.",
+            "mcap": 153130000000,
+            "price": 805
+          },
+          {
+            "symbol": "WENDT",
+            "name": "WENDT (INDIA) LIMITED",
+            "mcap": 13636200000,
+            "price": 6779
           }
         ]
       }
