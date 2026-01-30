@@ -38,7 +38,7 @@ jobs:
           node-version: 24.11.1
 
       - name: Install NPM Packages
-        run: npm install
+        run: npm ci
 
       - name: Build React App
         run: npm run build
