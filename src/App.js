@@ -7,12 +7,13 @@ function App() {
   const [selectedSub, setSelectedSub] = useState(null);
 
   // 1. Load Data on Startup
-  useEffect(() => {
-    fetch('/market_data.json')
-      .then(res => res.json())
-      .then(jsonData => setData(jsonData))
-      .catch(err => console.error("Failed to load data", err));
-  }, []);
+useEffect(() => {
+  fetch(`${process.env.PUBLIC_URL}/market_data.json`) // This looks at gdjitesh.github.io/repo-name/market_data.json (Correct)
+    .then(res => res.json())
+    .then(jsonData => setData(jsonData))
+    .catch(err => console.error("Failed to load data", err));
+}, []);
+
 
   // 2. Format Market Cap
   const formatMcap = (val) => {

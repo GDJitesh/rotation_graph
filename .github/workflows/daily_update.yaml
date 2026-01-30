@@ -38,7 +38,7 @@ jobs:
           node-version: 24.11.1
 
       - name: Install NPM Packages
-        run: npm ci
+        run: npm intall --no-package-lock
 
       - name: Build React App
         run: npm run build
