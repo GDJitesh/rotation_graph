@@ -9,6 +9,11 @@ function App() {
   const [timeframe, setTimeframe] = useState('daily'); // daily, weekly, monthly
 
   useEffect(() => {
+  if (benchmark) console.log("Benchmark ready");
+}, [benchmark]);
+
+  
+  useEffect(() => {
     // 1. Construct the correct URL based on the environment
     // process.env.PUBLIC_URL is set automatically by React
     const basePath = process.env.PUBLIC_URL || ''; 
