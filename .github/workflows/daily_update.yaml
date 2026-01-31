@@ -25,7 +25,7 @@ jobs:
 
       - name: Install Python Deps
         run: |
-          pip install requests
+          pip install requests yfinance pandas numpy
 
       - name: Run Data Fetcher
         run: |
