@@ -13,7 +13,7 @@ OUTPUT_FILE = "public/market_data.json"
 HISTORY_DAYS = 600
 RRG_TAIL = 6
 MIN_STOCKS_FOR_INDEX = 2     
-WINDOW_LENGTH = 12 # Standard lookback period for JdK RRG indicators
+WINDOW_LENGTH = 14 # Standard JdK lookback is often 10 or 14
 
 # Benchmark
 BENCHMARK_PRIMARY = "^CRSLDX" 
@@ -36,9 +36,10 @@ def normalize_series(series):
         series.index = series.index.tz_localize(None)
     # 3. Normalize to Midnight
     series.index = series.index.normalize()
-    return series
+    # 4. Sort to be safe
+    return series.sort_index()
 
-# --- 1. DATA HARVESTING (Rest of the functions remain the same) ---
+# --- 1. DATA HARVESTING ---
 def get_market_structure():
     log("1. Fetching Fyers Sector Hierarchy...")
     try:
@@ -66,9 +67,79 @@ def get_market_structure():
         log(f"Error fetching structure: {e}")
         return []
 
-# --- 2. INDICES & HISTORY (Rest of the function remains the same, assuming 'build_indices' returns normalized history data) ---
+# --- 3. RRG MATH (Moved up so it can be called inside build_indices) ---
+def calculate_rrg_metrics(price_series, benchmark_series, freq):
+    try:
+        if price_series.empty or benchmark_series.empty:
+            return []
+
+        # 1. Force both to be 1D Series and Normalize
+        p = normalize_series(price_series.copy()).squeeze()
+        b = normalize_series(benchmark_series.copy()).squeeze()
+        
+        # Intersection
+        common = p.index.intersection(b.index)
+        if len(common) < 20: return []
+        p, b = p.loc[common], b.loc[common]
+
+        # 2. Resample
+        rule = 'W-FRI' if freq == 'weekly' else 'ME' if freq == 'monthly' else None
+        if rule:
+            p = p.resample(rule).last()
+            b = b.resample(rule).last()
+        
+        # Align again
+        combined = pd.DataFrame({'p': p, 'b': b}).dropna()
+        if len(combined) < WINDOW_LENGTH: return []
+        
+        s_price = combined['p']
+        s_bench = combined['b']
+
+        # 3. JdK RRG Math
+        rs = (s_price / s_bench) * 100
+        
+        # RS-Ratio (Trend) - Normalized using StdDev (JdK Style)
+        # Note: Classic RRG uses 100 + ( (RS - MA) / STD )
+        rs_mean = rs.rolling(window=WINDOW_LENGTH).mean()
+        rs_std = rs.rolling(window=WINDOW_LENGTH).std(ddof=0)
+        
+        # Avoid division by zero
+        jrs_ratio = 100 + ((rs - rs_mean) / rs_std.replace(0, np.nan))
+        
+        # RS-Momentum (ROC of the Ratio)
+        # JdK calculates momentum of the Ratio, not the Price
+        jrs_roc = jrs_ratio.diff(1) 
+        jrs_roc_mean = jrs_roc.rolling(window=WINDOW_LENGTH).mean()
+        jrs_roc_std = jrs_roc.rolling(window=WINDOW_LENGTH).std(ddof=0)
+        
+        jrs_momentum = 100 + ((jrs_roc - jrs_roc_mean) / jrs_roc_std.replace(0, np.nan))
+
+        # 4. Final Structure
+        rrg_df = pd.DataFrame({
+            'RS_Ratio': jrs_ratio, 
+            'RS_Momentum': jrs_momentum
+        }).dropna()
+
+        if rrg_df.empty: return []
+
+        recent = rrg_df.tail(RRG_TAIL + 1) # +1 to show trajectory
+        
+        return [
+            {
+                "date": date.strftime('%Y-%m-%d'),
+                "x": round(float(row['RS_Ratio']), 2), # x axis
+                "y": round(float(row['RS_Momentum']), 2) # y axis
+            }
+            for date, row in recent.iterrows()
+        ]
+
+    except Exception as e:
+        # log(f"Error in RRG ({freq}): {e}")
+        return []
+
+# --- 2. INDICES & HISTORY ---
 def build_indices(structure):
-    log("2. Building History...")
+    log("2. Building History & Calculating Stock RRG...")
     
     # FETCH BENCHMARK
     log(f"   Fetching Benchmark: Nifty 500 ({BENCHMARK_PRIMARY})...")
@@ -96,6 +167,7 @@ def build_indices(structure):
             tickers = [s['symbol'] for s in stocks]
             
             try:
+                # Batch Download
                 df = yf.download(tickers, period=f"{HISTORY_DAYS}d", progress=False, auto_adjust=True)['Close']
                 if isinstance(df, pd.Series): df = df.to_frame()
                 df = normalize_series(df)
@@ -104,11 +176,41 @@ def build_indices(structure):
                 valid_tickers = df.columns.intersection(tickers)
                 if not len(valid_tickers): continue
 
+                # ---------------------------------------------------------
+                # NEW: PROCESS INDIVIDUAL STOCKS HERE
+                # ---------------------------------------------------------
+                processed_stocks = []
+                frequencies = ['daily', 'weekly', 'monthly']
+
+                for sym in valid_tickers:
+                    # Get Metadata from Fyers List
+                    meta = next((s for s in stocks if s['symbol'] == sym), None)
+                    if not meta: continue
+
+                    # Calculate Stock RRG
+                    stock_rrg = {}
+                    for freq in frequencies:
+                        # Pass the single stock series vs benchmark
+                        stock_rrg[freq] = calculate_rrg_metrics(df[sym], bench_df, freq)
+                    
+                    # Only add if we successfully calculated Daily RRG (implies valid data)
+                    if stock_rrg['daily']:
+                        processed_stocks.append({
+                            "symbol": sym,
+                            "name": meta['name'],
+                            "mcap": meta['mcap'],
+                            "rrg_data": stock_rrg
+                        })
+
+                # ---------------------------------------------------------
+                # SYNTHETIC INDEX LOGIC (As Before)
+                # ---------------------------------------------------------
                 if len(valid_tickers) < MIN_STOCKS_FOR_INDEX:
                     single_sym = valid_tickers[0]
                     ind_history = df[single_sym]
                     stock_obj = [s for s in stocks if s['symbol'] == single_sym][0]
                     display_name = f"{stock_obj['name']} (Stock)"
+                    is_index = False
                 else:
                     subset_stocks = [s for s in stocks if s['symbol'] in valid_tickers]
                     total_mcap = sum(s['mcap'] for s in subset_stocks)
@@ -124,16 +226,20 @@ def build_indices(structure):
                     if not ind_history.empty:
                         ind_history = ind_history / ind_history.iloc[0] * 100
                     display_name = ind_name
+                    is_index = True
                 
                 if not ind_history.empty:
                     sector_indices.append(ind_history)
                     mcap_sum = sum(s['mcap'] for s in stocks if s['symbol'] in valid_tickers)
                     sector_mcaps.append(mcap_sum)
+                    
+                    # Store Industry Data (History for RRG calc later, Stocks list for UI)
                     processed_industries.append({
                         "id": f"ind_{ind_name}",
                         "name": display_name,
-                        "is_index": len(valid_tickers) >= MIN_STOCKS_FOR_INDEX,
-                        "history": ind_history
+                        "is_index": is_index,
+                        "history": ind_history,
+                        "stocks": processed_stocks  # <--- ATTACHED STOCKS
                     })
 
             except Exception as e:
@@ -155,132 +261,55 @@ def build_indices(structure):
             
     return final_data, bench_df
 
-# --- 3. RRG MATH ---
-def calculate_rrg_metrics(price_series, benchmark_series, freq):
-    try:
-        if price_series.empty or benchmark_series.empty:
-            return []
-
-        # 1. Force both to be 1D Series and Normalize
-        # .squeeze() converts a 1-column DataFrame to a Series
-        p = normalize_series(price_series.copy()).squeeze()
-        b = normalize_series(benchmark_series.copy()).squeeze()
-        
-        # Intersection
-        common = p.index.intersection(b.index)
-        if len(common) < 20: return []
-        p, b = p.loc[common], b.loc[common]
-
-        # 2. Resample
-        rule = 'W-FRI' if freq == 'weekly' else 'ME' if freq == 'monthly' else None
-        if rule:
-            p = p.resample(rule).last()
-            b = b.resample(rule).last()
-        
-        # Align again after resampling and drop NaNs (Clean data only)
-        # Using a dict to create DF ensures identical indexing
-        combined = pd.DataFrame({'p': p, 'b': b}).dropna()
-        if len(combined) < WINDOW_LENGTH: return []
-        
-        # Extract clean 1D series for math
-        s_price = combined['p']
-        s_bench = combined['b']
-
-        # 3. JdK RRG Math
-        rs = s_price / s_bench
-        
-        # RS-Ratio (Trend)
-        rs_mean = rs.rolling(window=WINDOW_LENGTH).mean()
-        rs_std = rs.rolling(window=WINDOW_LENGTH).std(ddof=0)
-        
-        # Avoid division by zero/nan
-        jrs_ratio = 100 + ((rs - rs_mean) / rs_std.replace(0, np.nan))
-        
-        # RS-Momentum (ROC)
-        # Using diff() or pct_change()
-        jrs_roc = jrs_ratio.diff(1) 
-        jrs_roc_mean = jrs_roc.rolling(window=WINDOW_LENGTH).mean()
-        jrs_roc_std = jrs_roc.rolling(window=WINDOW_LENGTH).std(ddof=0)
-        
-        jrs_momentum = 100 + ((jrs_roc - jrs_roc_mean) / jrs_roc_std.replace(0, np.nan))
-
-        # 4. Final Structure
-        rrg_df = pd.DataFrame({
-            'RS_Ratio': jrs_ratio, 
-            'RS_Momentum': jrs_momentum
-        }).dropna()
-
-        if rrg_df.empty: return []
-
-        recent = rrg_df.tail(RRG_TAIL)
-        
-        return [
-            {
-                "date": date.strftime('%Y-%m-%d'),
-                "RS_Ratio": round(float(row['RS_Ratio']), 4),
-                "RS_Momentum": round(float(row['RS_Momentum']), 4)
-            }
-            for date, row in recent.iterrows()
-        ]
-
-    except Exception as e:
-        log(f"Error in RRG ({freq}): {e}")
-        return []
-
-
-# --- 4. INTEGRATION & OUTPUT (This function needs to be written to use the above) ---
+# --- 4. INTEGRATION & OUTPUT ---
 def process_all_rrg_values(final_data, bench_df):
-    log("3. Calculating RRG values...")
+    log("3. Calculating Sector/Industry RRG values...")
     output_structure = []
     frequencies = ['daily', 'weekly', 'monthly']
 
-    # First, calculate RRG for all indices vs benchmark
     for item in final_data:
-        # Calculate RRG for the main sector index
+        # 1. Sector RRG
         item_rrg_data = {}
         for freq in frequencies:
             item_rrg_data[freq] = calculate_rrg_metrics(item['history'], bench_df, freq)
         
-        processed_industries_with_rrg = []
+        processed_industries_output = []
         for industry in item['industries']:
-             # Calculate RRG for each sub-category index/stock
+            # 2. Industry RRG
             ind_rrg_data = {}
             for freq in frequencies:
                 ind_rrg_data[freq] = calculate_rrg_metrics(industry['history'], bench_df, freq)
             
+            # Construct Final Industry Object
             industry_output = {
                 "id": industry['id'],
                 "name": industry['name'],
                 "is_index": industry['is_index'],
-                "rrg_values": ind_rrg_data
+                "rrg_data": ind_rrg_data, # Consistent Naming
+                "stocks": industry['stocks'] # Already calculated in build_indices
             }
-            processed_industries_with_rrg.append(industry_output)
+            processed_industries_output.append(industry_output)
         
         sector_output = {
             "id": item['id'],
             "name": item['name'],
-            "rrg_values": item_rrg_data,
-            "industries": processed_industries_with_rrg
+            "rrg_data": item_rrg_data,
+            "industries": processed_industries_output
         }
         output_structure.append(sector_output)
     
-    # Calculate RRG for the benchmark against itself (for origin point validation)
-    benchmark_rrg_data = {}
-    for freq in frequencies:
-         # Calculating RRG for the benchmark against itself should yield values around 100, 100
-        benchmark_rrg_data[freq] = calculate_rrg_metrics(bench_df, bench_df, freq)
-
     final_json_output = {
+        "last_updated": datetime.now().strftime('%Y-%m-%d'),
         "benchmark": BENCHMARK_PRIMARY if not bench_df.empty else BENCHMARK_FALLBACK,
-        "benchmark_rrg": benchmark_rrg_data,
         "sectors": output_structure
     }
 
     # Output to JSON
+    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
     with open(OUTPUT_FILE, 'w') as f:
-        json.dump(final_json_output, f, indent=4)
+        json.dump(final_json_output, f, indent=2) # indent=2 saves space vs 4
     
-    log(f"✅ Successfully wrote RRG data to {OUTPUT_FILE}")
+    log(f"SUCCESS! RRG data (Sectors, Industries, Stocks) saved to {OUTPUT_FILE}")
 
 
 # --- MAIN EXECUTION ---
@@ -290,4 +319,3 @@ if __name__ == "__main__":
         final_data, bench_df = build_indices(structure)
         if not bench_df.empty and final_data:
             process_all_rrg_values(final_data, bench_df)
-
