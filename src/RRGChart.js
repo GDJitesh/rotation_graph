@@ -36,7 +36,7 @@ const RRGChart = ({ selectedNode, nodeType, timeFrame }) => {
       // Unpack data for Plotly
       const xVals = history.map(h => h.x);
       const yVals = history.map(h => h.y);
-      const dates = history.map(h => h.date);
+      //const dates = history.map(h => h.date);
 
       // A. The "Tail" (Line)
       traces.push({
