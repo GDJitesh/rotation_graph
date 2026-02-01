@@ -5782,213 +5782,6 @@
             ]
         },
         {
-            "id": "sec_Trading",
-            "name": "Trading",
-            "rrg_values": {
-                "daily": [
-                    {
-                        "date": "2026-01-23",
-                        "RS_Ratio": 97.0893,
-                        "RS_Momentum": 97.944
-                    },
-                    {
-                        "date": "2026-01-27",
-                        "RS_Ratio": 98.6005,
-                        "RS_Momentum": 101.5105
-                    },
-                    {
-                        "date": "2026-01-28",
-                        "RS_Ratio": 99.005,
-                        "RS_Momentum": 100.3514
-                    },
-                    {
-                        "date": "2026-01-29",
-                        "RS_Ratio": 99.3649,
-                        "RS_Momentum": 100.1994
-                    },
-                    {
-                        "date": "2026-01-30",
-                        "RS_Ratio": 97.6494,
-                        "RS_Momentum": 98.3603
-                    },
-                    {
-                        "date": "2026-02-01",
-                        "RS_Ratio": 99.6458,
-                        "RS_Momentum": 101.6366
-                    }
-                ],
-                "weekly": [
-                    {
-                        "date": "2026-01-02",
-                        "RS_Ratio": 98.8961,
-                        "RS_Momentum": 100.8872
-                    },
-                    {
-                        "date": "2026-01-09",
-                        "RS_Ratio": 98.4912,
-                        "RS_Momentum": 99.5539
-                    },
-                    {
-                        "date": "2026-01-16",
-                        "RS_Ratio": 98.6869,
-                        "RS_Momentum": 100.6657
-                    },
-                    {
-                        "date": "2026-01-23",
-                        "RS_Ratio": 97.623,
-                        "RS_Momentum": 98.3944
-                    },
-                    {
-                        "date": "2026-01-30",
-                        "RS_Ratio": 97.8412,
-                        "RS_Momentum": 100.6057
-                    },
-                    {
-                        "date": "2026-02-06",
-                        "RS_Ratio": 99.0662,
-                        "RS_Momentum": 101.9563
-                    }
-                ],
-                "monthly": [
-                    {
-                        "date": "2025-09-30",
-                        "RS_Ratio": 100.3376,
-                        "RS_Momentum": 102.1241
-                    },
-                    {
-                        "date": "2025-10-31",
-                        "RS_Ratio": 99.5934,
-                        "RS_Momentum": 98.9031
-                    },
-                    {
-                        "date": "2025-11-30",
-                        "RS_Ratio": 97.9367,
-                        "RS_Momentum": 97.7799
-                    },
-                    {
-                        "date": "2025-12-31",
-                        "RS_Ratio": 97.9291,
-                        "RS_Momentum": 100.0766
-                    },
-                    {
-                        "date": "2026-01-31",
-                        "RS_Ratio": 97.2773,
-                        "RS_Momentum": 99.238
-                    },
-                    {
-                        "date": "2026-02-28",
-                        "RS_Ratio": 98.5022,
-                        "RS_Momentum": 101.5093
-                    }
-                ]
-            },
-            "industries": [
-                {
-                    "id": "ind_Trading",
-                    "name": "Trading",
-                    "is_index": true,
-                    "rrg_values": {
-                        "daily": [
-                            {
-                                "date": "2026-01-23",
-                                "RS_Ratio": 97.0893,
-                                "RS_Momentum": 97.944
-                            },
-                            {
-                                "date": "2026-01-27",
-                                "RS_Ratio": 98.6005,
-                                "RS_Momentum": 101.5105
-                            },
-                            {
-                                "date": "2026-01-28",
-                                "RS_Ratio": 99.005,
-                                "RS_Momentum": 100.3514
-                            },
-                            {
-                                "date": "2026-01-29",
-                                "RS_Ratio": 99.3649,
-                                "RS_Momentum": 100.1994
-                            },
-                            {
-                                "date": "2026-01-30",
-                                "RS_Ratio": 97.6494,
-                                "RS_Momentum": 98.3603
-                            },
-                            {
-                                "date": "2026-02-01",
-                                "RS_Ratio": 99.6458,
-                                "RS_Momentum": 101.6366
-                            }
-                        ],
-                        "weekly": [
-                            {
-                                "date": "2026-01-02",
-                                "RS_Ratio": 98.8961,
-                                "RS_Momentum": 100.8872
-                            },
-                            {
-                                "date": "2026-01-09",
-                                "RS_Ratio": 98.4912,
-                                "RS_Momentum": 99.5539
-                            },
-                            {
-                                "date": "2026-01-16",
-                                "RS_Ratio": 98.6869,
-                                "RS_Momentum": 100.6657
-                            },
-                            {
-                                "date": "2026-01-23",
-                                "RS_Ratio": 97.623,
-                                "RS_Momentum": 98.3944
-                            },
-                            {
-                                "date": "2026-01-30",
-                                "RS_Ratio": 97.8412,
-                                "RS_Momentum": 100.6057
-                            },
-                            {
-                                "date": "2026-02-06",
-                                "RS_Ratio": 99.0662,
-                                "RS_Momentum": 101.9563
-                            }
-                        ],
-                        "monthly": [
-                            {
-                                "date": "2025-09-30",
-                                "RS_Ratio": 100.3376,
-                                "RS_Momentum": 102.1241
-                            },
-                            {
-                                "date": "2025-10-31",
-                                "RS_Ratio": 99.5934,
-                                "RS_Momentum": 98.9031
-                            },
-                            {
-                                "date": "2025-11-30",
-                                "RS_Ratio": 97.9367,
-                                "RS_Momentum": 97.7799
-                            },
-                            {
-                                "date": "2025-12-31",
-                                "RS_Ratio": 97.9291,
-                                "RS_Momentum": 100.0766
-                            },
-                            {
-                                "date": "2026-01-31",
-                                "RS_Ratio": 97.2773,
-                                "RS_Momentum": 99.238
-                            },
-                            {
-                                "date": "2026-02-28",
-                                "RS_Ratio": 98.5022,
-                                "RS_Momentum": 101.5093
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
             "id": "sec_FMCG",
             "name": "FMCG",
             "rrg_values": {
@@ -7013,6 +6806,213 @@
                                 "date": "2026-02-28",
                                 "RS_Ratio": 100.0992,
                                 "RS_Momentum": 102.4139
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "sec_Trading",
+            "name": "Trading",
+            "rrg_values": {
+                "daily": [
+                    {
+                        "date": "2026-01-23",
+                        "RS_Ratio": 97.0893,
+                        "RS_Momentum": 97.944
+                    },
+                    {
+                        "date": "2026-01-27",
+                        "RS_Ratio": 98.6005,
+                        "RS_Momentum": 101.5105
+                    },
+                    {
+                        "date": "2026-01-28",
+                        "RS_Ratio": 99.005,
+                        "RS_Momentum": 100.3514
+                    },
+                    {
+                        "date": "2026-01-29",
+                        "RS_Ratio": 99.3649,
+                        "RS_Momentum": 100.1994
+                    },
+                    {
+                        "date": "2026-01-30",
+                        "RS_Ratio": 97.6494,
+                        "RS_Momentum": 98.3603
+                    },
+                    {
+                        "date": "2026-02-01",
+                        "RS_Ratio": 99.6458,
+                        "RS_Momentum": 101.6366
+                    }
+                ],
+                "weekly": [
+                    {
+                        "date": "2026-01-02",
+                        "RS_Ratio": 98.8961,
+                        "RS_Momentum": 100.8872
+                    },
+                    {
+                        "date": "2026-01-09",
+                        "RS_Ratio": 98.4912,
+                        "RS_Momentum": 99.5539
+                    },
+                    {
+                        "date": "2026-01-16",
+                        "RS_Ratio": 98.6869,
+                        "RS_Momentum": 100.6657
+                    },
+                    {
+                        "date": "2026-01-23",
+                        "RS_Ratio": 97.623,
+                        "RS_Momentum": 98.3944
+                    },
+                    {
+                        "date": "2026-01-30",
+                        "RS_Ratio": 97.8412,
+                        "RS_Momentum": 100.6057
+                    },
+                    {
+                        "date": "2026-02-06",
+                        "RS_Ratio": 99.0662,
+                        "RS_Momentum": 101.9563
+                    }
+                ],
+                "monthly": [
+                    {
+                        "date": "2025-09-30",
+                        "RS_Ratio": 100.3376,
+                        "RS_Momentum": 102.1241
+                    },
+                    {
+                        "date": "2025-10-31",
+                        "RS_Ratio": 99.5934,
+                        "RS_Momentum": 98.9031
+                    },
+                    {
+                        "date": "2025-11-30",
+                        "RS_Ratio": 97.9367,
+                        "RS_Momentum": 97.7799
+                    },
+                    {
+                        "date": "2025-12-31",
+                        "RS_Ratio": 97.9291,
+                        "RS_Momentum": 100.0766
+                    },
+                    {
+                        "date": "2026-01-31",
+                        "RS_Ratio": 97.2773,
+                        "RS_Momentum": 99.238
+                    },
+                    {
+                        "date": "2026-02-28",
+                        "RS_Ratio": 98.5022,
+                        "RS_Momentum": 101.5093
+                    }
+                ]
+            },
+            "industries": [
+                {
+                    "id": "ind_Trading",
+                    "name": "Trading",
+                    "is_index": true,
+                    "rrg_values": {
+                        "daily": [
+                            {
+                                "date": "2026-01-23",
+                                "RS_Ratio": 97.0893,
+                                "RS_Momentum": 97.944
+                            },
+                            {
+                                "date": "2026-01-27",
+                                "RS_Ratio": 98.6005,
+                                "RS_Momentum": 101.5105
+                            },
+                            {
+                                "date": "2026-01-28",
+                                "RS_Ratio": 99.005,
+                                "RS_Momentum": 100.3514
+                            },
+                            {
+                                "date": "2026-01-29",
+                                "RS_Ratio": 99.3649,
+                                "RS_Momentum": 100.1994
+                            },
+                            {
+                                "date": "2026-01-30",
+                                "RS_Ratio": 97.6494,
+                                "RS_Momentum": 98.3603
+                            },
+                            {
+                                "date": "2026-02-01",
+                                "RS_Ratio": 99.6458,
+                                "RS_Momentum": 101.6366
+                            }
+                        ],
+                        "weekly": [
+                            {
+                                "date": "2026-01-02",
+                                "RS_Ratio": 98.8961,
+                                "RS_Momentum": 100.8872
+                            },
+                            {
+                                "date": "2026-01-09",
+                                "RS_Ratio": 98.4912,
+                                "RS_Momentum": 99.5539
+                            },
+                            {
+                                "date": "2026-01-16",
+                                "RS_Ratio": 98.6869,
+                                "RS_Momentum": 100.6657
+                            },
+                            {
+                                "date": "2026-01-23",
+                                "RS_Ratio": 97.623,
+                                "RS_Momentum": 98.3944
+                            },
+                            {
+                                "date": "2026-01-30",
+                                "RS_Ratio": 97.8412,
+                                "RS_Momentum": 100.6057
+                            },
+                            {
+                                "date": "2026-02-06",
+                                "RS_Ratio": 99.0662,
+                                "RS_Momentum": 101.9563
+                            }
+                        ],
+                        "monthly": [
+                            {
+                                "date": "2025-09-30",
+                                "RS_Ratio": 100.3376,
+                                "RS_Momentum": 102.1241
+                            },
+                            {
+                                "date": "2025-10-31",
+                                "RS_Ratio": 99.5934,
+                                "RS_Momentum": 98.9031
+                            },
+                            {
+                                "date": "2025-11-30",
+                                "RS_Ratio": 97.9367,
+                                "RS_Momentum": 97.7799
+                            },
+                            {
+                                "date": "2025-12-31",
+                                "RS_Ratio": 97.9291,
+                                "RS_Momentum": 100.0766
+                            },
+                            {
+                                "date": "2026-01-31",
+                                "RS_Ratio": 97.2773,
+                                "RS_Momentum": 99.238
+                            },
+                            {
+                                "date": "2026-02-28",
+                                "RS_Ratio": 98.5022,
+                                "RS_Momentum": 101.5093
                             }
                         ]
                     }
@@ -13527,6 +13527,213 @@
             ]
         },
         {
+            "id": "sec_Education & Training",
+            "name": "Education & Training",
+            "rrg_values": {
+                "daily": [
+                    {
+                        "date": "2026-01-23",
+                        "RS_Ratio": 100.6542,
+                        "RS_Momentum": 99.3359
+                    },
+                    {
+                        "date": "2026-01-27",
+                        "RS_Ratio": 99.6761,
+                        "RS_Momentum": 99.2917
+                    },
+                    {
+                        "date": "2026-01-28",
+                        "RS_Ratio": 100.2404,
+                        "RS_Momentum": 100.3166
+                    },
+                    {
+                        "date": "2026-01-29",
+                        "RS_Ratio": 99.6298,
+                        "RS_Momentum": 99.598
+                    },
+                    {
+                        "date": "2026-01-30",
+                        "RS_Ratio": 96.8425,
+                        "RS_Momentum": 98.4598
+                    },
+                    {
+                        "date": "2026-02-01",
+                        "RS_Ratio": 100.1053,
+                        "RS_Momentum": 101.6418
+                    }
+                ],
+                "weekly": [
+                    {
+                        "date": "2026-01-02",
+                        "RS_Ratio": 100.7556,
+                        "RS_Momentum": 99.879
+                    },
+                    {
+                        "date": "2026-01-09",
+                        "RS_Ratio": 100.6122,
+                        "RS_Momentum": 99.9348
+                    },
+                    {
+                        "date": "2026-01-16",
+                        "RS_Ratio": 100.4417,
+                        "RS_Momentum": 99.9113
+                    },
+                    {
+                        "date": "2026-01-23",
+                        "RS_Ratio": 100.3592,
+                        "RS_Momentum": 99.9608
+                    },
+                    {
+                        "date": "2026-01-30",
+                        "RS_Ratio": 98.5959,
+                        "RS_Momentum": 98.4719
+                    },
+                    {
+                        "date": "2026-02-06",
+                        "RS_Ratio": 99.7202,
+                        "RS_Momentum": 101.0829
+                    }
+                ],
+                "monthly": [
+                    {
+                        "date": "2025-09-30",
+                        "RS_Ratio": 102.3014,
+                        "RS_Momentum": 99.8876
+                    },
+                    {
+                        "date": "2025-10-31",
+                        "RS_Ratio": 101.6727,
+                        "RS_Momentum": 99.5347
+                    },
+                    {
+                        "date": "2025-11-30",
+                        "RS_Ratio": 102.8544,
+                        "RS_Momentum": 100.58
+                    },
+                    {
+                        "date": "2025-12-31",
+                        "RS_Ratio": 102.0537,
+                        "RS_Momentum": 99.4149
+                    },
+                    {
+                        "date": "2026-01-31",
+                        "RS_Ratio": 100.8646,
+                        "RS_Momentum": 99.279
+                    },
+                    {
+                        "date": "2026-02-28",
+                        "RS_Ratio": 101.412,
+                        "RS_Momentum": 100.2759
+                    }
+                ]
+            },
+            "industries": [
+                {
+                    "id": "ind_Educational Institutions",
+                    "name": "Educational Institutions",
+                    "is_index": true,
+                    "rrg_values": {
+                        "daily": [
+                            {
+                                "date": "2026-01-23",
+                                "RS_Ratio": 100.6542,
+                                "RS_Momentum": 99.3359
+                            },
+                            {
+                                "date": "2026-01-27",
+                                "RS_Ratio": 99.6761,
+                                "RS_Momentum": 99.2917
+                            },
+                            {
+                                "date": "2026-01-28",
+                                "RS_Ratio": 100.2404,
+                                "RS_Momentum": 100.3166
+                            },
+                            {
+                                "date": "2026-01-29",
+                                "RS_Ratio": 99.6298,
+                                "RS_Momentum": 99.598
+                            },
+                            {
+                                "date": "2026-01-30",
+                                "RS_Ratio": 96.8425,
+                                "RS_Momentum": 98.4598
+                            },
+                            {
+                                "date": "2026-02-01",
+                                "RS_Ratio": 100.1053,
+                                "RS_Momentum": 101.6418
+                            }
+                        ],
+                        "weekly": [
+                            {
+                                "date": "2026-01-02",
+                                "RS_Ratio": 100.7556,
+                                "RS_Momentum": 99.879
+                            },
+                            {
+                                "date": "2026-01-09",
+                                "RS_Ratio": 100.6122,
+                                "RS_Momentum": 99.9348
+                            },
+                            {
+                                "date": "2026-01-16",
+                                "RS_Ratio": 100.4417,
+                                "RS_Momentum": 99.9113
+                            },
+                            {
+                                "date": "2026-01-23",
+                                "RS_Ratio": 100.3592,
+                                "RS_Momentum": 99.9608
+                            },
+                            {
+                                "date": "2026-01-30",
+                                "RS_Ratio": 98.5959,
+                                "RS_Momentum": 98.4719
+                            },
+                            {
+                                "date": "2026-02-06",
+                                "RS_Ratio": 99.7202,
+                                "RS_Momentum": 101.0829
+                            }
+                        ],
+                        "monthly": [
+                            {
+                                "date": "2025-09-30",
+                                "RS_Ratio": 102.3014,
+                                "RS_Momentum": 99.8876
+                            },
+                            {
+                                "date": "2025-10-31",
+                                "RS_Ratio": 101.6727,
+                                "RS_Momentum": 99.5347
+                            },
+                            {
+                                "date": "2025-11-30",
+                                "RS_Ratio": 102.8544,
+                                "RS_Momentum": 100.58
+                            },
+                            {
+                                "date": "2025-12-31",
+                                "RS_Ratio": 102.0537,
+                                "RS_Momentum": 99.4149
+                            },
+                            {
+                                "date": "2026-01-31",
+                                "RS_Ratio": 100.8646,
+                                "RS_Momentum": 99.279
+                            },
+                            {
+                                "date": "2026-02-28",
+                                "RS_Ratio": 101.412,
+                                "RS_Momentum": 100.2759
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
             "id": "sec_Crude Oil",
             "name": "Crude Oil",
             "rrg_values": {
@@ -14037,213 +14244,6 @@
                                 "date": "2026-02-28",
                                 "RS_Ratio": 99.5867,
                                 "RS_Momentum": 99.212
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "id": "sec_Education & Training",
-            "name": "Education & Training",
-            "rrg_values": {
-                "daily": [
-                    {
-                        "date": "2026-01-23",
-                        "RS_Ratio": 100.6542,
-                        "RS_Momentum": 99.3359
-                    },
-                    {
-                        "date": "2026-01-27",
-                        "RS_Ratio": 99.6761,
-                        "RS_Momentum": 99.2917
-                    },
-                    {
-                        "date": "2026-01-28",
-                        "RS_Ratio": 100.2404,
-                        "RS_Momentum": 100.3166
-                    },
-                    {
-                        "date": "2026-01-29",
-                        "RS_Ratio": 99.6298,
-                        "RS_Momentum": 99.598
-                    },
-                    {
-                        "date": "2026-01-30",
-                        "RS_Ratio": 96.8425,
-                        "RS_Momentum": 98.4598
-                    },
-                    {
-                        "date": "2026-02-01",
-                        "RS_Ratio": 100.1053,
-                        "RS_Momentum": 101.6418
-                    }
-                ],
-                "weekly": [
-                    {
-                        "date": "2026-01-02",
-                        "RS_Ratio": 100.7556,
-                        "RS_Momentum": 99.879
-                    },
-                    {
-                        "date": "2026-01-09",
-                        "RS_Ratio": 100.6122,
-                        "RS_Momentum": 99.9348
-                    },
-                    {
-                        "date": "2026-01-16",
-                        "RS_Ratio": 100.4417,
-                        "RS_Momentum": 99.9113
-                    },
-                    {
-                        "date": "2026-01-23",
-                        "RS_Ratio": 100.3592,
-                        "RS_Momentum": 99.9608
-                    },
-                    {
-                        "date": "2026-01-30",
-                        "RS_Ratio": 98.5959,
-                        "RS_Momentum": 98.4719
-                    },
-                    {
-                        "date": "2026-02-06",
-                        "RS_Ratio": 99.7202,
-                        "RS_Momentum": 101.0829
-                    }
-                ],
-                "monthly": [
-                    {
-                        "date": "2025-09-30",
-                        "RS_Ratio": 102.3014,
-                        "RS_Momentum": 99.8876
-                    },
-                    {
-                        "date": "2025-10-31",
-                        "RS_Ratio": 101.6727,
-                        "RS_Momentum": 99.5347
-                    },
-                    {
-                        "date": "2025-11-30",
-                        "RS_Ratio": 102.8544,
-                        "RS_Momentum": 100.58
-                    },
-                    {
-                        "date": "2025-12-31",
-                        "RS_Ratio": 102.0537,
-                        "RS_Momentum": 99.4149
-                    },
-                    {
-                        "date": "2026-01-31",
-                        "RS_Ratio": 100.8646,
-                        "RS_Momentum": 99.279
-                    },
-                    {
-                        "date": "2026-02-28",
-                        "RS_Ratio": 101.412,
-                        "RS_Momentum": 100.2759
-                    }
-                ]
-            },
-            "industries": [
-                {
-                    "id": "ind_Educational Institutions",
-                    "name": "Educational Institutions",
-                    "is_index": true,
-                    "rrg_values": {
-                        "daily": [
-                            {
-                                "date": "2026-01-23",
-                                "RS_Ratio": 100.6542,
-                                "RS_Momentum": 99.3359
-                            },
-                            {
-                                "date": "2026-01-27",
-                                "RS_Ratio": 99.6761,
-                                "RS_Momentum": 99.2917
-                            },
-                            {
-                                "date": "2026-01-28",
-                                "RS_Ratio": 100.2404,
-                                "RS_Momentum": 100.3166
-                            },
-                            {
-                                "date": "2026-01-29",
-                                "RS_Ratio": 99.6298,
-                                "RS_Momentum": 99.598
-                            },
-                            {
-                                "date": "2026-01-30",
-                                "RS_Ratio": 96.8425,
-                                "RS_Momentum": 98.4598
-                            },
-                            {
-                                "date": "2026-02-01",
-                                "RS_Ratio": 100.1053,
-                                "RS_Momentum": 101.6418
-                            }
-                        ],
-                        "weekly": [
-                            {
-                                "date": "2026-01-02",
-                                "RS_Ratio": 100.7556,
-                                "RS_Momentum": 99.879
-                            },
-                            {
-                                "date": "2026-01-09",
-                                "RS_Ratio": 100.6122,
-                                "RS_Momentum": 99.9348
-                            },
-                            {
-                                "date": "2026-01-16",
-                                "RS_Ratio": 100.4417,
-                                "RS_Momentum": 99.9113
-                            },
-                            {
-                                "date": "2026-01-23",
-                                "RS_Ratio": 100.3592,
-                                "RS_Momentum": 99.9608
-                            },
-                            {
-                                "date": "2026-01-30",
-                                "RS_Ratio": 98.5959,
-                                "RS_Momentum": 98.4719
-                            },
-                            {
-                                "date": "2026-02-06",
-                                "RS_Ratio": 99.7202,
-                                "RS_Momentum": 101.0829
-                            }
-                        ],
-                        "monthly": [
-                            {
-                                "date": "2025-09-30",
-                                "RS_Ratio": 102.3014,
-                                "RS_Momentum": 99.8876
-                            },
-                            {
-                                "date": "2025-10-31",
-                                "RS_Ratio": 101.6727,
-                                "RS_Momentum": 99.5347
-                            },
-                            {
-                                "date": "2025-11-30",
-                                "RS_Ratio": 102.8544,
-                                "RS_Momentum": 100.58
-                            },
-                            {
-                                "date": "2025-12-31",
-                                "RS_Ratio": 102.0537,
-                                "RS_Momentum": 99.4149
-                            },
-                            {
-                                "date": "2026-01-31",
-                                "RS_Ratio": 100.8646,
-                                "RS_Momentum": 99.279
-                            },
-                            {
-                                "date": "2026-02-28",
-                                "RS_Ratio": 101.412,
-                                "RS_Momentum": 100.2759
                             }
                         ]
                     }
@@ -16424,213 +16424,6 @@
             ]
         },
         {
-            "id": "sec_Ratings",
-            "name": "Ratings",
-            "rrg_values": {
-                "daily": [
-                    {
-                        "date": "2026-01-22",
-                        "RS_Ratio": 98.9975,
-                        "RS_Momentum": 98.6702
-                    },
-                    {
-                        "date": "2026-01-23",
-                        "RS_Ratio": 98.8411,
-                        "RS_Momentum": 100.416
-                    },
-                    {
-                        "date": "2026-01-27",
-                        "RS_Ratio": 98.0236,
-                        "RS_Momentum": 98.8938
-                    },
-                    {
-                        "date": "2026-01-28",
-                        "RS_Ratio": 99.4077,
-                        "RS_Momentum": 102.4962
-                    },
-                    {
-                        "date": "2026-01-29",
-                        "RS_Ratio": 98.7557,
-                        "RS_Momentum": 99.3747
-                    },
-                    {
-                        "date": "2026-02-01",
-                        "RS_Ratio": 101.8042,
-                        "RS_Momentum": 102.6969
-                    }
-                ],
-                "weekly": [
-                    {
-                        "date": "2026-01-02",
-                        "RS_Ratio": 99.2227,
-                        "RS_Momentum": 101.502
-                    },
-                    {
-                        "date": "2026-01-09",
-                        "RS_Ratio": 100.9177,
-                        "RS_Momentum": 102.3416
-                    },
-                    {
-                        "date": "2026-01-16",
-                        "RS_Ratio": 101.0797,
-                        "RS_Momentum": 100.0376
-                    },
-                    {
-                        "date": "2026-01-23",
-                        "RS_Ratio": 100.9145,
-                        "RS_Momentum": 99.5503
-                    },
-                    {
-                        "date": "2026-01-30",
-                        "RS_Ratio": 100.7887,
-                        "RS_Momentum": 99.5389
-                    },
-                    {
-                        "date": "2026-02-06",
-                        "RS_Ratio": 101.9259,
-                        "RS_Momentum": 101.398
-                    }
-                ],
-                "monthly": [
-                    {
-                        "date": "2025-09-30",
-                        "RS_Ratio": 98.7863,
-                        "RS_Momentum": 99.0789
-                    },
-                    {
-                        "date": "2025-10-31",
-                        "RS_Ratio": 99.3144,
-                        "RS_Momentum": 100.9106
-                    },
-                    {
-                        "date": "2025-11-30",
-                        "RS_Ratio": 98.7014,
-                        "RS_Momentum": 99.4752
-                    },
-                    {
-                        "date": "2025-12-31",
-                        "RS_Ratio": 98.611,
-                        "RS_Momentum": 100.3091
-                    },
-                    {
-                        "date": "2026-01-31",
-                        "RS_Ratio": 99.396,
-                        "RS_Momentum": 101.3766
-                    },
-                    {
-                        "date": "2026-02-28",
-                        "RS_Ratio": 99.9674,
-                        "RS_Momentum": 100.8913
-                    }
-                ]
-            },
-            "industries": [
-                {
-                    "id": "ind_Ratings",
-                    "name": "Ratings",
-                    "is_index": true,
-                    "rrg_values": {
-                        "daily": [
-                            {
-                                "date": "2026-01-22",
-                                "RS_Ratio": 98.9975,
-                                "RS_Momentum": 98.6702
-                            },
-                            {
-                                "date": "2026-01-23",
-                                "RS_Ratio": 98.8411,
-                                "RS_Momentum": 100.416
-                            },
-                            {
-                                "date": "2026-01-27",
-                                "RS_Ratio": 98.0236,
-                                "RS_Momentum": 98.8938
-                            },
-                            {
-                                "date": "2026-01-28",
-                                "RS_Ratio": 99.4077,
-                                "RS_Momentum": 102.4962
-                            },
-                            {
-                                "date": "2026-01-29",
-                                "RS_Ratio": 98.7557,
-                                "RS_Momentum": 99.3747
-                            },
-                            {
-                                "date": "2026-02-01",
-                                "RS_Ratio": 101.8042,
-                                "RS_Momentum": 102.6969
-                            }
-                        ],
-                        "weekly": [
-                            {
-                                "date": "2026-01-02",
-                                "RS_Ratio": 99.2227,
-                                "RS_Momentum": 101.502
-                            },
-                            {
-                                "date": "2026-01-09",
-                                "RS_Ratio": 100.9177,
-                                "RS_Momentum": 102.3416
-                            },
-                            {
-                                "date": "2026-01-16",
-                                "RS_Ratio": 101.0797,
-                                "RS_Momentum": 100.0376
-                            },
-                            {
-                                "date": "2026-01-23",
-                                "RS_Ratio": 100.9145,
-                                "RS_Momentum": 99.5503
-                            },
-                            {
-                                "date": "2026-01-30",
-                                "RS_Ratio": 100.7887,
-                                "RS_Momentum": 99.5389
-                            },
-                            {
-                                "date": "2026-02-06",
-                                "RS_Ratio": 101.9259,
-                                "RS_Momentum": 101.398
-                            }
-                        ],
-                        "monthly": [
-                            {
-                                "date": "2025-09-30",
-                                "RS_Ratio": 98.7863,
-                                "RS_Momentum": 99.0789
-                            },
-                            {
-                                "date": "2025-10-31",
-                                "RS_Ratio": 99.3144,
-                                "RS_Momentum": 100.9106
-                            },
-                            {
-                                "date": "2025-11-30",
-                                "RS_Ratio": 98.7014,
-                                "RS_Momentum": 99.4752
-                            },
-                            {
-                                "date": "2025-12-31",
-                                "RS_Ratio": 98.611,
-                                "RS_Momentum": 100.3091
-                            },
-                            {
-                                "date": "2026-01-31",
-                                "RS_Ratio": 99.396,
-                                "RS_Momentum": 101.3766
-                            },
-                            {
-                                "date": "2026-02-28",
-                                "RS_Ratio": 99.9674,
-                                "RS_Momentum": 100.8913
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
             "id": "sec_Abrasives",
             "name": "Abrasives",
             "rrg_values": {
@@ -16831,6 +16624,213 @@
                                 "date": "2026-02-28",
                                 "RS_Ratio": 98.7626,
                                 "RS_Momentum": 101.3304
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "sec_Ratings",
+            "name": "Ratings",
+            "rrg_values": {
+                "daily": [
+                    {
+                        "date": "2026-01-22",
+                        "RS_Ratio": 98.9975,
+                        "RS_Momentum": 98.6702
+                    },
+                    {
+                        "date": "2026-01-23",
+                        "RS_Ratio": 98.8411,
+                        "RS_Momentum": 100.416
+                    },
+                    {
+                        "date": "2026-01-27",
+                        "RS_Ratio": 98.0236,
+                        "RS_Momentum": 98.8938
+                    },
+                    {
+                        "date": "2026-01-28",
+                        "RS_Ratio": 99.4077,
+                        "RS_Momentum": 102.4962
+                    },
+                    {
+                        "date": "2026-01-29",
+                        "RS_Ratio": 98.7557,
+                        "RS_Momentum": 99.3747
+                    },
+                    {
+                        "date": "2026-02-01",
+                        "RS_Ratio": 101.8042,
+                        "RS_Momentum": 102.6969
+                    }
+                ],
+                "weekly": [
+                    {
+                        "date": "2026-01-02",
+                        "RS_Ratio": 99.2227,
+                        "RS_Momentum": 101.502
+                    },
+                    {
+                        "date": "2026-01-09",
+                        "RS_Ratio": 100.9177,
+                        "RS_Momentum": 102.3416
+                    },
+                    {
+                        "date": "2026-01-16",
+                        "RS_Ratio": 101.0797,
+                        "RS_Momentum": 100.0376
+                    },
+                    {
+                        "date": "2026-01-23",
+                        "RS_Ratio": 100.9145,
+                        "RS_Momentum": 99.5503
+                    },
+                    {
+                        "date": "2026-01-30",
+                        "RS_Ratio": 100.7887,
+                        "RS_Momentum": 99.5389
+                    },
+                    {
+                        "date": "2026-02-06",
+                        "RS_Ratio": 101.9259,
+                        "RS_Momentum": 101.398
+                    }
+                ],
+                "monthly": [
+                    {
+                        "date": "2025-09-30",
+                        "RS_Ratio": 98.7863,
+                        "RS_Momentum": 99.0789
+                    },
+                    {
+                        "date": "2025-10-31",
+                        "RS_Ratio": 99.3144,
+                        "RS_Momentum": 100.9106
+                    },
+                    {
+                        "date": "2025-11-30",
+                        "RS_Ratio": 98.7014,
+                        "RS_Momentum": 99.4752
+                    },
+                    {
+                        "date": "2025-12-31",
+                        "RS_Ratio": 98.611,
+                        "RS_Momentum": 100.3091
+                    },
+                    {
+                        "date": "2026-01-31",
+                        "RS_Ratio": 99.396,
+                        "RS_Momentum": 101.3766
+                    },
+                    {
+                        "date": "2026-02-28",
+                        "RS_Ratio": 99.9674,
+                        "RS_Momentum": 100.8913
+                    }
+                ]
+            },
+            "industries": [
+                {
+                    "id": "ind_Ratings",
+                    "name": "Ratings",
+                    "is_index": true,
+                    "rrg_values": {
+                        "daily": [
+                            {
+                                "date": "2026-01-22",
+                                "RS_Ratio": 98.9975,
+                                "RS_Momentum": 98.6702
+                            },
+                            {
+                                "date": "2026-01-23",
+                                "RS_Ratio": 98.8411,
+                                "RS_Momentum": 100.416
+                            },
+                            {
+                                "date": "2026-01-27",
+                                "RS_Ratio": 98.0236,
+                                "RS_Momentum": 98.8938
+                            },
+                            {
+                                "date": "2026-01-28",
+                                "RS_Ratio": 99.4077,
+                                "RS_Momentum": 102.4962
+                            },
+                            {
+                                "date": "2026-01-29",
+                                "RS_Ratio": 98.7557,
+                                "RS_Momentum": 99.3747
+                            },
+                            {
+                                "date": "2026-02-01",
+                                "RS_Ratio": 101.8042,
+                                "RS_Momentum": 102.6969
+                            }
+                        ],
+                        "weekly": [
+                            {
+                                "date": "2026-01-02",
+                                "RS_Ratio": 99.2227,
+                                "RS_Momentum": 101.502
+                            },
+                            {
+                                "date": "2026-01-09",
+                                "RS_Ratio": 100.9177,
+                                "RS_Momentum": 102.3416
+                            },
+                            {
+                                "date": "2026-01-16",
+                                "RS_Ratio": 101.0797,
+                                "RS_Momentum": 100.0376
+                            },
+                            {
+                                "date": "2026-01-23",
+                                "RS_Ratio": 100.9145,
+                                "RS_Momentum": 99.5503
+                            },
+                            {
+                                "date": "2026-01-30",
+                                "RS_Ratio": 100.7887,
+                                "RS_Momentum": 99.5389
+                            },
+                            {
+                                "date": "2026-02-06",
+                                "RS_Ratio": 101.9259,
+                                "RS_Momentum": 101.398
+                            }
+                        ],
+                        "monthly": [
+                            {
+                                "date": "2025-09-30",
+                                "RS_Ratio": 98.7863,
+                                "RS_Momentum": 99.0789
+                            },
+                            {
+                                "date": "2025-10-31",
+                                "RS_Ratio": 99.3144,
+                                "RS_Momentum": 100.9106
+                            },
+                            {
+                                "date": "2025-11-30",
+                                "RS_Ratio": 98.7014,
+                                "RS_Momentum": 99.4752
+                            },
+                            {
+                                "date": "2025-12-31",
+                                "RS_Ratio": 98.611,
+                                "RS_Momentum": 100.3091
+                            },
+                            {
+                                "date": "2026-01-31",
+                                "RS_Ratio": 99.396,
+                                "RS_Momentum": 101.3766
+                            },
+                            {
+                                "date": "2026-02-28",
+                                "RS_Ratio": 99.9674,
+                                "RS_Momentum": 100.8913
                             }
                         ]
                     }
