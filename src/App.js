@@ -11,10 +11,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  
+  // --- 1. FETCH DATA ON LOAD ---
   useEffect(() => {
-    // 1. Construct the correct URL based on the environment
-    // process.env.PUBLIC_URL is set automatically by React
+    // URL Fix for GitHub Pages vs Localhost
     const basePath = process.env.PUBLIC_URL || ''; 
     const jsonUrl = `${basePath}/market_data.json`;
 
@@ -25,18 +24,22 @@ function App() {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const contentType = res.headers.get("content-type");
         if (!contentType || !contentType.includes("application/json")) {
-          throw new TypeError("Received HTML instead of JSON. Check Port Visibility or File Path.");
+          throw new TypeError("Received HTML instead of JSON. Check Port Visibility.");
         }
         return res.json();
       })
       .then(jsonData => {
         setMarketData(jsonData);
         
-        // Default Selection: First Sector
-        if (jsonData.sectors && jsonData.sectors.length > 0) {
-          setSelectedNode(jsonData.sectors[0]);
-          setNodeType('sector');
-        }
+        // --- INITIAL VIEW: MARKET OVERVIEW ---
+        // We construct a "Virtual Node" representing the whole market.
+        // We trick the chart by treating 'Sectors' as the 'Industries' of the Market.
+        setSelectedNode({
+            name: "Nifty 500 Market",
+            industries: jsonData.sectors // This allows the chart to plot all sectors
+        });
+        setNodeType('sector'); // Tells chart to look for 'industries' key
+        
         setLoading(false);
       })
       .catch(err => {
@@ -46,6 +49,24 @@ function App() {
       });
   }, []);
 
+  // --- 2. HANDLE SELECTIONS (Drill Down) ---
+  const handleSelect = (node, type) => {
+    // If user clicks the header "Market Map" in Sidebar (you might add a button later),
+    // we could reset to Market View. For now, Sidebar handles specific items.
+    setSelectedNode(node);
+    setNodeType(type);
+  };
+
+  const resetToMarket = () => {
+    if (!marketData) return;
+    setSelectedNode({
+        name: "Nifty 500 Market",
+        industries: marketData.sectors
+    });
+    setNodeType('sector');
+  };
+
+  // --- 3. RENDER STATES ---
   if (loading) return <div className="loading">Loading Market Data...</div>;
   if (error) return <div className="error">Error: {error}</div>;
   if (!marketData) return <div className="error">No Data Found</div>;
@@ -53,19 +74,16 @@ function App() {
   return (
     <div className="App" style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       
-      {/* 1. LEFT SIDEBAR (20%) */}
+      {/* LEFT SIDEBAR (20%) */}
       <Sidebar 
         data={marketData} 
-        onSelect={(node, type) => {
-          setSelectedNode(node);
-          setNodeType(type);
-        }} 
+        onSelect={handleSelect} 
       />
 
-      {/* 2. MAIN CONTENT (80%) */}
+      {/* MAIN CONTENT (80%) */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         
-        {/* Header / Controls */}
+        {/* HEADER / CONTROLS */}
         <div style={{ 
             padding: '15px', 
             borderBottom: '1px solid #ddd', 
@@ -74,24 +92,39 @@ function App() {
             alignItems: 'center',
             backgroundColor: '#f8f9fa'
         }}>
-          <h2 style={{ margin: 0 }}>Rotation Graph (RRG)</h2>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+            <h2 style={{ margin: 0, cursor: 'pointer' }} onClick={resetToMarket}>
+                Rotation Graph (RRG)
+            </h2>
+            {/* Breadcrumb-ish indicator */}
+            <span style={{ color: '#666', fontSize: '0.9em' }}>
+                {nodeType === 'sector' && selectedNode.name.includes("Market") 
+                    ? "Viewing: All Sectors" 
+                    : `Viewing: ${selectedNode?.name}`
+                }
+            </span>
+            <button onClick={resetToMarket} style={{ fontSize: '0.8em', padding: '4px 8px', cursor: 'pointer'}}>
+                Reset to Market
+            </button>
+          </div>
           
-          {/* Timeframe Toggles */}
+          {/* TIMEFRAME TOGGLES */}
           <div>
             {['daily', 'weekly', 'monthly'].map(tf => (
               <button
                 key={tf}
                 onClick={() => setTimeFrame(tf)}
                 style={{
-                  padding: '8px 16px',
+                  padding: '6px 14px',
                   margin: '0 5px',
                   border: '1px solid #007bff',
                   backgroundColor: timeFrame === tf ? '#007bff' : 'white',
                   color: timeFrame === tf ? 'white' : '#007bff',
-                  borderRadius: '5px',
+                  borderRadius: '4px',
                   cursor: 'pointer',
                   textTransform: 'capitalize',
-                  fontWeight: 'bold'
+                  fontWeight: '600',
+                  fontSize: '0.9rem'
                 }}
               >
                 {tf}
@@ -100,8 +133,8 @@ function App() {
           </div>
         </div>
 
-        {/* The Chart */}
-        <div style={{ flex: 1, padding: '20px', position: 'relative' }}>
+        {/* THE CHART */}
+        <div style={{ flex: 1, padding: '10px', position: 'relative', overflow: 'hidden' }}>
             <RRGChart 
               selectedNode={selectedNode} 
               nodeType={nodeType} 
@@ -109,15 +142,17 @@ function App() {
             />
         </div>
         
-        {/* Footer Info */}
+        {/* FOOTER */}
         <div style={{ 
-            padding: '10px', 
-            fontSize: '0.8em', 
-            color: '#666', 
+            padding: '8px', 
+            fontSize: '0.75em', 
+            color: '#888', 
             textAlign: 'center',
-            borderTop: '1px solid #eee'
+            borderTop: '1px solid #eee',
+            backgroundColor: '#fafafa'
         }}>
-          Last Updated: {marketData.last_updated} | Benchmark: {marketData.benchmark}
+          Last Updated: {marketData.last_updated} | 
+          Benchmark: {nodeType === 'industry' ? `${selectedNode.name} Index` : marketData.benchmark_name}
         </div>
       </div>
     </div>
