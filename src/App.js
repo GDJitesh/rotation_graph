@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import Sidebar from './Sidebar';
+import RRGChart from './RRGChart';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState([]); // This will hold the sectors array
-  const [benchmark, setBenchmark] = useState(null);
-  const [selectedSector, setSelectedSector] = useState(null);
-  const [selectedSub, setSelectedSub] = useState(null);
-  const [timeframe, setTimeframe] = useState('daily'); // daily, weekly, monthly
-
-  useEffect(() => {
-  if (benchmark) console.log("Benchmark ready");
-}, [benchmark]);
+  const [marketData, setMarketData] = useState(null);
+  const [selectedNode, setSelectedNode] = useState(null);
+  const [nodeType, setNodeType] = useState(null); // 'sector' or 'industry'
+  const [timeFrame, setTimeFrame] = useState('weekly'); // 'daily', 'weekly', 'monthly'
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   
   useEffect(() => {
@@ -19,140 +18,108 @@ function App() {
     const basePath = process.env.PUBLIC_URL || ''; 
     const jsonUrl = `${basePath}/market_data.json`;
 
-    console.log("Fetching data from:", jsonUrl); // Debug log
+    console.log("Fetching data from:", jsonUrl);
 
     fetch(jsonUrl)
       .then(res => {
-        // 2. Check if we actually got a valid response
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        
-        // 3. Check the content type before parsing
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const contentType = res.headers.get("content-type");
         if (!contentType || !contentType.includes("application/json")) {
-          // This catches the HTML/Login page error
           throw new TypeError("Received HTML instead of JSON. Check Port Visibility or File Path.");
         }
-
         return res.json();
       })
       .then(jsonData => {
-        setData(jsonData.sectors || []);
-        setBenchmark(jsonData.benchmark_rrg || null);
+        setMarketData(jsonData);
+        
+        // Default Selection: First Sector
+        if (jsonData.sectors && jsonData.sectors.length > 0) {
+          setSelectedNode(jsonData.sectors[0]);
+          setNodeType('sector');
+        }
+        setLoading(false);
       })
       .catch(err => {
         console.error("Fetch Error:", err);
-        // Optional: Set an error state here to show in the UI
+        setError(err.message);
+        setLoading(false);
       });
   }, []);
 
-  // Helper to get color based on RRG Quadrant
-  const getQuadrantColor = (ratio, mom) => {
-    if (ratio >= 100 && mom >= 100) return '#28a745'; // Leading (Green)
-    if (ratio >= 100 && mom < 100) return '#ffc107';  // Weakening (Yellow)
-    if (ratio < 100 && mom < 100) return '#dc3545';  // Lagging (Red)
-    return '#17a2b8'; // Improving (Blue)
-  };
+  if (loading) return <div className="loading">Loading Market Data...</div>;
+  if (error) return <div className="error">Error: {error}</div>;
+  if (!marketData) return <div className="error">No Data Found</div>;
 
   return (
-    <div className="App" style={{ padding: '20px', fontFamily: 'Arial', backgroundColor: '#f8f9fa' }}>
-      <h1>Market RRG Explorer</h1>
-
-      {/* TIMEFRAME SELECTOR */}
-      <div style={{ marginBottom: '20px' }}>
-        <label><b>Timeframe: </b></label>
-        {['daily', 'weekly', 'monthly'].map(tf => (
-          <button key={tf} onClick={() => setTimeframe(tf)}
-            style={{ margin: '0 5px', padding: '5px 15px', textTransform: 'capitalize', 
-                     backgroundColor: timeframe === tf ? '#333' : '#ddd', color: timeframe === tf ? '#fff' : '#000' }}>
-            {tf}
-          </button>
-        ))}
-      </div>
+    <div className="App" style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       
-      {/* SECTOR SELECTOR */}
-      <div style={{ marginBottom: '20px' }}>
-        <h3>1. Sectors:</h3>
-        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-          {data.map((sec, idx) => {
-            const latestRRG = sec.rrg_values[timeframe]?.slice(-1)[0];
-            return (
-              <button 
-                key={idx} 
-                onClick={() => { setSelectedSector(sec); setSelectedSub(null); }}
+      {/* 1. LEFT SIDEBAR (20%) */}
+      <Sidebar 
+        data={marketData} 
+        onSelect={(node, type) => {
+          setSelectedNode(node);
+          setNodeType(type);
+        }} 
+      />
+
+      {/* 2. MAIN CONTENT (80%) */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        
+        {/* Header / Controls */}
+        <div style={{ 
+            padding: '15px', 
+            borderBottom: '1px solid #ddd', 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center',
+            backgroundColor: '#f8f9fa'
+        }}>
+          <h2 style={{ margin: 0 }}>Rotation Graph (RRG)</h2>
+          
+          {/* Timeframe Toggles */}
+          <div>
+            {['daily', 'weekly', 'monthly'].map(tf => (
+              <button
+                key={tf}
+                onClick={() => setTimeFrame(tf)}
                 style={{
-                  padding: '10px', borderRadius: '5px', cursor: 'pointer', border: '1px solid #ccc',
-                  background: selectedSector?.id === sec.id ? '#007bff' : 'white',
-                  color: selectedSector?.id === sec.id ? 'white' : 'black',
-                  borderBottom: latestRRG ? `4px solid ${getQuadrantColor(latestRRG.RS_Ratio, latestRRG.RS_Momentum)}` : 'none'
+                  padding: '8px 16px',
+                  margin: '0 5px',
+                  border: '1px solid #007bff',
+                  backgroundColor: timeFrame === tf ? '#007bff' : 'white',
+                  color: timeFrame === tf ? 'white' : '#007bff',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  textTransform: 'capitalize',
+                  fontWeight: 'bold'
                 }}
               >
-                {sec.name} <br/>
-                <small>{latestRRG ? `${latestRRG.RS_Ratio.toFixed(1)} / ${latestRRG.RS_Momentum.toFixed(1)}` : 'No Data'}</small>
+                {tf}
               </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* SUB-SECTOR / INDUSTRY SELECTOR */}
-      {selectedSector && (
-        <div style={{ marginBottom: '20px' }}>
-          <h3>2. Industries in {selectedSector.name}:</h3>
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            {selectedSector.industries.map((sub, idx) => {
-              const latestRRG = sub.rrg_values[timeframe]?.slice(-1)[0];
-              return (
-                <button 
-                  key={idx}
-                  onClick={() => setSelectedSub(sub)}
-                  style={{
-                    padding: '8px', borderRadius: '5px', cursor: 'pointer', border: '1px solid #ccc',
-                    background: selectedSub?.id === sub.id ? '#28a745' : '#e2e6ea',
-                    color: selectedSub?.id === sub.id ? 'white' : 'black',
-                    borderBottom: latestRRG ? `4px solid ${getQuadrantColor(latestRRG.RS_Ratio, latestRRG.RS_Momentum)}` : 'none'
-                  }}
-                >
-                  {sub.name}
-                </button>
-              );
-            })}
+            ))}
           </div>
         </div>
-      )}
 
-      {/* RRG DATA TABLE */}
-      {selectedSub && (
-        <div>
-          <h3>3. RRG Tail Data for {selectedSub.name}:</h3>
-          <table border="1" cellPadding="10" style={{ borderCollapse: 'collapse', width: '100%', backgroundColor: 'white' }}>
-            <thead>
-              <tr style={{ background: '#343a40', color: 'white' }}>
-                <th>Date</th>
-                <th>RS Ratio</th>
-                <th>RS Momentum</th>
-                <th>Quadrant</th>
-              </tr>
-            </thead>
-            <tbody>
-              {(selectedSub.rrg_values[timeframe] || []).map((point, idx) => (
-                <tr key={idx}>
-                  <td>{point.date}</td>
-                  <td>{point.RS_Ratio}</td>
-                  <td>{point.RS_Momentum}</td>
-                  <td style={{ 
-                    fontWeight: 'bold', 
-                    color: getQuadrantColor(point.RS_Ratio, point.RS_Momentum) 
-                  }}>
-                    {point.RS_Ratio >= 100 ? (point.RS_Momentum >= 100 ? 'Leading' : 'Weakening') : (point.RS_Momentum >= 100 ? 'Improving' : 'Lagging')}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {/* The Chart */}
+        <div style={{ flex: 1, padding: '20px', position: 'relative' }}>
+            <RRGChart 
+              selectedNode={selectedNode} 
+              nodeType={nodeType} 
+              timeFrame={timeFrame} 
+            />
         </div>
-      )}
+        
+        {/* Footer Info */}
+        <div style={{ 
+            padding: '10px', 
+            fontSize: '0.8em', 
+            color: '#666', 
+            textAlign: 'center',
+            borderTop: '1px solid #eee'
+        }}>
+          Last Updated: {marketData.last_updated} | Benchmark: {marketData.benchmark}
+        </div>
+      </div>
     </div>
   );
 }
