@@ -3,59 +3,66 @@ import Plot from 'react-plotly.js';
 
 const RRGChart = ({ selectedNode, nodeType, timeFrame, benchmarkMode }) => {
   const [hoveredName, setHoveredName] = useState(null);
-  // Track which items the user has hidden manually
-  const [hiddenItems, setHiddenItems] = useState({}); // { "ItemName": true }
+  const [hiddenItems, setHiddenItems] = useState({}); 
   const [showLegend, setShowLegend] = useState(true);
 
-  if (!selectedNode) return <div style={{padding: 20}}>Select a Sector or Industry from the left.</div>;
-
   // --- 1. DATA PREPARATION ---
+  // Default values to prevent crashes if selectedNode is null
   let title = "";
   let itemsToPlot = [];
   let benchmarkLabel = "";
 
-  if (nodeType === 'sector') {
-    title = `Sector Breakdown: ${selectedNode.name}`;
-    itemsToPlot = selectedNode.industries || [];
-    benchmarkLabel = benchmarkMode === 'relative' 
-        ? `Benchmark: ${selectedNode.name} Index` 
-        : `Benchmark: Nifty 500`;
-  } else if (nodeType === 'industry') {
-    title = `Industry Breakdown: ${selectedNode.name}`;
-    itemsToPlot = selectedNode.stocks || [];
-    benchmarkLabel = benchmarkMode === 'relative' 
-        ? `Benchmark: ${selectedNode.name} Index` 
-        : `Benchmark: Nifty 500`;
-  } else {
-    title = "Market Overview";
-    itemsToPlot = selectedNode.industries || [];
-    benchmarkLabel = "Benchmark: Nifty 500";
+  // Only run this logic if we actually have a node
+  if (selectedNode) {
+    if (nodeType === 'sector') {
+        title = `Sector Breakdown: ${selectedNode.name}`;
+        itemsToPlot = selectedNode.industries || [];
+        benchmarkLabel = benchmarkMode === 'relative' 
+            ? `Benchmark: ${selectedNode.name} Index` 
+            : `Benchmark: Nifty 500`;
+    } else if (nodeType === 'industry') {
+        title = `Industry Breakdown: ${selectedNode.name}`;
+        itemsToPlot = selectedNode.stocks || [];
+        benchmarkLabel = benchmarkMode === 'relative' 
+            ? `Benchmark: ${selectedNode.name} Index` 
+            : `Benchmark: Nifty 500`;
+    } else {
+        title = "Market Overview";
+        itemsToPlot = selectedNode.industries || [];
+        benchmarkLabel = "Benchmark: Nifty 500";
+    }
   }
 
-  // --- 2. GENERATE TRACES & LEGEND LIST ---
-  // Memoize to prevent flicker
+  // --- 2. GENERATE TRACES (HOOK) ---
+  // This Hook MUST run every time, even if itemsToPlot is empty.
   const { traces, axisRanges, legendData } = useMemo(() => {
     const _traces = [];
     const _legendData = [];
+    
+    // Safety: If no items, return empty structures immediately
+    if (itemsToPlot.length === 0) {
+        return { traces: [], axisRanges: {x:[98,102], y:[98,102]}, legendData: [] };
+    }
+
     let minX = 100, maxX = 100, minY = 100, maxY = 100;
     let hasData = false;
 
     // Add items
     itemsToPlot.forEach((item) => {
-      const mode = selectedNode.name.includes("Market") ? 'relative' : benchmarkMode;
+      // Logic Handle for Market View vs others
+      const mode = (selectedNode && selectedNode.name.includes("Market")) ? 'relative' : benchmarkMode;
       const history = (item.rrg_data && item.rrg_data[mode]) ? item.rrg_data[mode][timeFrame] : null;
       
       const isHidden = hiddenItems[item.name];
 
-      // Trend Status Logic (Minervini)
-      const isBullish = item.is_bullish; // From JSON
+      // Trend Status Logic
+      const isBullish = item.is_bullish; 
       const symbolShape = isBullish ? 'circle' : 'circle-open';
       const trendText = isBullish ? "✔ Stage 2 (Trend)" : "⚠ Weak Structure";
       
-      // Add to Legend Data even if hidden
       _legendData.push({
           name: item.name,
-          color: isBullish ? '#28a745' : '#dc3545', // Green for Bullish, Red for Weak structure in legend
+          color: isBullish ? '#28a745' : '#dc3545',
           isHidden: isHidden,
           isBullish: isBullish
       });
@@ -76,7 +83,6 @@ const RRGChart = ({ selectedNode, nodeType, timeFrame, benchmarkMode }) => {
         const tailOpacity = isHovered ? 1 : (isDimmed ? 0.05 : 0.6); 
         const headOpacity = isHovered ? 1 : (isDimmed ? 0.1 : 0.9);
 
-        // RRG Quadrant Color Logic
         let color = '#7f8c8d'; 
         if (current.x > 100 && current.y > 100) color = '#28a745';      
         else if (current.x < 100 && current.y > 100) color = '#3498db'; 
@@ -144,6 +150,12 @@ const RRGChart = ({ selectedNode, nodeType, timeFrame, benchmarkMode }) => {
 
   const config = { displayModeBar: false, scrollZoom: false, doubleClick: false, showTips: false };
 
+  // --- 4. RENDER ---
+  // If no node selected, show message (BUT DO IT HERE, AFTER HOOKS)
+  if (!selectedNode) {
+      return <div style={{padding: 20, textAlign: 'center', color: '#666'}}>Select a Sector or Industry from the left sidebar to view the RRG.</div>;
+  }
+
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative', display: 'flex' }}>
         
@@ -181,15 +193,13 @@ const RRGChart = ({ selectedNode, nodeType, timeFrame, benchmarkMode }) => {
             display: 'flex', flexDirection: 'column',
             overflow: 'hidden'
         }}>
-            {/* Toggle Button */}
             <div 
                 onClick={() => setShowLegend(!showLegend)}
                 style={{ padding: '10px', cursor: 'pointer', background: '#eee', textAlign: 'center', fontWeight: 'bold' }}
             >
-                {showLegend ? "Legend (Click to Hide)" : "☰"}
+                {showLegend ? "Legend" : "☰"}
             </div>
 
-            {/* List */}
             {showLegend && (
                 <div style={{ flex: 1, overflowY: 'auto', padding: '10px' }}>
                     <div style={{ fontSize: '0.8em', color: '#666', marginBottom: '10px' }}>
@@ -214,7 +224,6 @@ const RRGChart = ({ selectedNode, nodeType, timeFrame, benchmarkMode }) => {
                             onMouseEnter={() => setHoveredName(item.name)}
                             onMouseLeave={() => setHoveredName(null)}
                         >
-                            {/* Shape Indicator */}
                             <div style={{
                                 width: 10, height: 10, 
                                 borderRadius: '50%', 
