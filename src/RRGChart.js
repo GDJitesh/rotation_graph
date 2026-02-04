@@ -6,49 +6,38 @@ const RRGChart = ({ selectedNode, nodeType, timeFrame, benchmarkMode }) => {
   const [hiddenItems, setHiddenItems] = useState({}); 
   const [showLegend, setShowLegend] = useState(true);
 
-  // --- 1. DATA PREPARATION ---
-  // Default values to prevent crashes if selectedNode is null
-  let title = "";
-  let itemsToPlot = [];
-  let benchmarkLabel = "";
+  // --- 1. DATA PROCESSING (MEMOIZED) ---
+  // We calculate everything inside one big useMemo to avoid dependency errors.
+  const { traces, axisRanges, legendData, chartTitle, benchmarkLabel } = useMemo(() => {
+    // A. Initialize Defaults
+    let _traces = [];
+    let _legendData = [];
+    let _title = "";
+    let _benchLabel = "";
+    let _items = [];
 
-  // Only run this logic if we actually have a node
-  if (selectedNode) {
-    if (nodeType === 'sector') {
-        title = `Sector Breakdown: ${selectedNode.name}`;
-        itemsToPlot = selectedNode.industries || [];
-        benchmarkLabel = benchmarkMode === 'relative' 
-            ? `Benchmark: ${selectedNode.name} Index` 
-            : `Benchmark: Nifty 500`;
-    } else if (nodeType === 'industry') {
-        title = `Industry Breakdown: ${selectedNode.name}`;
-        itemsToPlot = selectedNode.stocks || [];
-        benchmarkLabel = benchmarkMode === 'relative' 
-            ? `Benchmark: ${selectedNode.name} Index` 
-            : `Benchmark: Nifty 500`;
-    } else {
-        title = "Market Overview";
-        itemsToPlot = selectedNode.industries || [];
-        benchmarkLabel = "Benchmark: Nifty 500";
-    }
-  }
-
-  // --- 2. GENERATE TRACES (HOOK) ---
-  // This Hook MUST run every time, even if itemsToPlot is empty.
-  const { traces, axisRanges, legendData } = useMemo(() => {
-    const _traces = [];
-    const _legendData = [];
-    
-    // Safety: If no items, return empty structures immediately
-    if (itemsToPlot.length === 0) {
-        return { traces: [], axisRanges: {x:[98,102], y:[98,102]}, legendData: [] };
+    // B. Determine What to Plot & Labels based on Props
+    if (selectedNode) {
+        if (nodeType === 'sector') {
+            _title = `Sector Breakdown: ${selectedNode.name}`;
+            _items = selectedNode.industries || [];
+            _benchLabel = benchmarkMode === 'relative' ? `Benchmark: ${selectedNode.name} Index` : `Benchmark: Nifty 500`;
+        } else if (nodeType === 'industry') {
+            _title = `Industry Breakdown: ${selectedNode.name}`;
+            _items = selectedNode.stocks || [];
+            _benchLabel = benchmarkMode === 'relative' ? `Benchmark: ${selectedNode.name} Index` : `Benchmark: Nifty 500`;
+        } else {
+            _title = "Market Overview";
+            _items = selectedNode.industries || [];
+            _benchLabel = "Benchmark: Nifty 500";
+        }
     }
 
+    // C. Process Traces (Only if we have items)
     let minX = 100, maxX = 100, minY = 100, maxY = 100;
     let hasData = false;
 
-    // Add items
-    itemsToPlot.forEach((item) => {
+    _items.forEach((item) => {
       // Logic Handle for Market View vs others
       const mode = (selectedNode && selectedNode.name.includes("Market")) ? 'relative' : benchmarkMode;
       const history = (item.rrg_data && item.rrg_data[mode]) ? item.rrg_data[mode][timeFrame] : null;
@@ -121,13 +110,19 @@ const RRGChart = ({ selectedNode, nodeType, timeFrame, benchmarkMode }) => {
         y: hasData ? [minY - padding, maxY + padding] : [98, 102]
     };
 
-    return { traces: _traces, axisRanges: finalRanges, legendData: _legendData };
-  }, [itemsToPlot, timeFrame, benchmarkMode, selectedNode, hoveredName, hiddenItems]);
+    return { 
+        traces: _traces, 
+        axisRanges: finalRanges, 
+        legendData: _legendData,
+        chartTitle: _title,
+        benchmarkLabel: _benchLabel
+    };
 
+  }, [selectedNode, nodeType, benchmarkMode, timeFrame, hiddenItems, hoveredName]);
 
-  // --- 3. UI LAYOUT ---
+  // --- 2. LAYOUT CONFIG ---
   const layout = {
-    title: { text: title, font: { size: 16 } },
+    title: { text: chartTitle, font: { size: 16 } },
     autosize: true, margin: {l: 50, r: 20, t: 40, b: 40},
     hovermode: 'closest', showlegend: false,
     xaxis: { title: 'Relative Strength', range: axisRanges.x, fixedrange: true, zeroline: false, gridcolor: '#f0f0f0' },
@@ -150,8 +145,7 @@ const RRGChart = ({ selectedNode, nodeType, timeFrame, benchmarkMode }) => {
 
   const config = { displayModeBar: false, scrollZoom: false, doubleClick: false, showTips: false };
 
-  // --- 4. RENDER ---
-  // If no node selected, show message (BUT DO IT HERE, AFTER HOOKS)
+  // --- 3. RENDER ---
   if (!selectedNode) {
       return <div style={{padding: 20, textAlign: 'center', color: '#666'}}>Select a Sector or Industry from the left sidebar to view the RRG.</div>;
   }
