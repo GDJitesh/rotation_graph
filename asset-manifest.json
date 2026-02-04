@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/rotation_graph/static/css/main.f855e6bc.css",
-    "main.js": "/rotation_graph/static/js/main.e3e153d2.js",
+    "main.js": "/rotation_graph/static/js/main.d8a52b7f.js",
     "static/js/453.23539b20.chunk.js": "/rotation_graph/static/js/453.23539b20.chunk.js",
     "index.html": "/rotation_graph/index.html",
     "main.f855e6bc.css.map": "/rotation_graph/static/css/main.f855e6bc.css.map",
-    "main.e3e153d2.js.map": "/rotation_graph/static/js/main.e3e153d2.js.map",
+    "main.d8a52b7f.js.map": "/rotation_graph/static/js/main.d8a52b7f.js.map",
     "453.23539b20.chunk.js.map": "/rotation_graph/static/js/453.23539b20.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.e3e153d2.js"
+    "static/js/main.d8a52b7f.js"
   ]
 }
